@@ -1,0 +1,6 @@
+NET "reloj" CLOCK_DEDICATED_ROUTE=FALSE;
+NET "reloj" LOC="G12";
+NET "Salida<3>" LOC="P6";
+NET "Salida<2>" LOC="P7";
+NET "Salida<1>" LOC="M11";
+NET "Salida<0>" LOC="M5";

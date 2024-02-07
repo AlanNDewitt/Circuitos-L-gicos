@@ -1,0 +1,44 @@
+%SIGNAL
+PIN   1 =  CLK 
+PIN   2 =  DOWN 
+PIN   3 =  UP 
+PIN  23 =  q0 
+PIN  22 =  q1 
+PIN  21 =  q2 
+PIN  20 =  q3 
+%END
+
+%FIELD
+FIELD estados = q0,q1,q2,q3
+%END
+
+%EQUATION
+q0.d  =>
+    UP & q0 & q2 & q3
+  # DOWN & q0 & q2 & q3
+
+q1.d  =>
+    DOWN & !q0 & !q1 & q2 & q3
+  # DOWN & q0 & q1 & q2 & q3
+  # UP & !q0 & q1 & q2 & q3
+  # UP & q0 & !q1 & q2 & q3
+
+q2.d  =>
+    0 
+
+q3.d  =>
+    0 
+
+q0.oe  =>
+    1 
+
+q1.oe  =>
+    1 
+
+q2.oe  =>
+    1 
+
+q3.oe  =>
+    1 
+
+%END

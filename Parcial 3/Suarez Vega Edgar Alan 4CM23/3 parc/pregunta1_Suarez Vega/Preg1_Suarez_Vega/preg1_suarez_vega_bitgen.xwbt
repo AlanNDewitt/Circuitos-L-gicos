@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Suarez Vega Examen\3 parc\pregunta1_Suarez Vega\Preg1_Suarez_Vega\preg1_suarez_vega.ncd
+OUTFILE=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Suarez Vega Examen\3 parc\pregunta1_Suarez Vega\Preg1_Suarez_Vega\preg1_suarez_vega.bit
+FAMILY=Spartan3E
+PART=xc3s100e-5cp132
+WORKINGDIR=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Suarez Vega Examen\3 parc\pregunta1_Suarez Vega\Preg1_Suarez_Vega
+LICENSE=WebPack
+USER_INFO=211847159_0_0_350

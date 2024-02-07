@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -o "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/contador_binario_simula_bench_isim_beh.exe" -prj "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/contador_binario_simula_bench_beh.prj" "work.contador_binario_simula_bench" 

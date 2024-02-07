@@ -1,0 +1,37 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Tue Dec 14 10:49:51 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000020
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00000f      
+            16 out of 1094 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 CICLO250   0x00000b    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                   INICIO   0x000004    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                     LOOP   0x00000d    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                    LOOPM   0x000007    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000004    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                    LOOPM   0x000007    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                 CICLO250   0x00000b    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+                     LOOP   0x00000d    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250X200.ASM
+
+

@@ -1,0 +1,50 @@
+%SIGNAL
+PIN   1 =  clk 
+PIN   2 =  i0 
+PIN   3 =  i1 
+PIN   4 =  i2 
+PIN   5 =  i3 
+PIN   6 =  i4 
+PIN   7 =  i5 
+PIN   8 =  i6 
+PIN   9 =  i7 
+PIN  11 =  oe 
+PIN  19 =  q0 
+PIN  18 =  q1 
+PIN  17 =  q2 
+PIN  16 =  q3 
+PIN  15 =  q4 
+PIN  14 =  q5 
+PIN  13 =  q6 
+PIN  12 =  q7 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+q0.d  =>
+    i0
+
+q1.d  =>
+    i1
+
+q2.d  =>
+    i2
+
+q3.d  =>
+    i3
+
+q4.d  =>
+    i4
+
+q5.d  =>
+    i5
+
+q6.d  =>
+    i6
+
+q7.d  =>
+    i7
+
+%END

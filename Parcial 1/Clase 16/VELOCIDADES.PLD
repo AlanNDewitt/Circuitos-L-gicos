@@ -1,0 +1,28 @@
+Name     Velocidades ;
+PartNo   00 ;
+Date     21/09/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/*Pines de Entrada*/
+PIN 1 = A;
+PIN 2 = B;
+PIN 3 = C;
+PIN 4 = D;
+PIN 5 = E;
+
+/*Pines de Salida*/
+PIN 23 = V1;
+PIN 22 = V2;
+PIN 21 = V3;
+
+/*FUNCIONES*/
+/*E*D*+E*DC*B**/
+V1 = !E&!D#!E&D&!C&!B;
+V2 = !E&D&C#!E&D&B#E&!D&!C#E&!D&!B&!A;
+V3 = !E&!D#!E&D&!C&!B;
+

@@ -1,0 +1,37 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Wed Dec 15 10:53:39 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00002a
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x000014      
+            21 out of 1094 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   BOTON0   0x00000c    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                 BOTON0_H   0x00000e    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                      FIN   0x000014    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                   INICIO   0x00000a    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x00000a    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                   BOTON0   0x00000c    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                 BOTON0_H   0x00000e    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+                      FIN   0x000014    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 48\indirecto.ASM
+
+

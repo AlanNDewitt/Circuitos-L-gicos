@@ -1,0 +1,6 @@
+xst -intstyle ise -ifn "C:/Users/carlo/Documents/Proyectos Xilinix/PRIMOS_PARES/PRIMOS_PARES.xst" -ofn "C:/Users/carlo/Documents/Proyectos Xilinix/PRIMOS_PARES/PRIMOS_PARES.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s100e-cp132-5 "PRIMOS_PARES.ngc" PRIMOS_PARES.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o PRIMOS_PARES_map.ncd PRIMOS_PARES.ngd PRIMOS_PARES.pcf 
+par -w -intstyle ise -ol high -t 1 PRIMOS_PARES_map.ncd PRIMOS_PARES.ncd PRIMOS_PARES.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PRIMOS_PARES.twx PRIMOS_PARES.ncd -o PRIMOS_PARES.twr PRIMOS_PARES.pcf 
+bitgen -intstyle ise -f PRIMOS_PARES.ut PRIMOS_PARES.ncd 

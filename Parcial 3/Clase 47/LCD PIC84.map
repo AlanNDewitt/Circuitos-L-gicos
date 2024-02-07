@@ -1,0 +1,49 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Tue Dec 14 11:27:05 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x00009a
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00004c      
+            77 out of 1094 program addresses used, program memory utilization is 7%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   BORRAR   0x000037    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                      FIN   0x00004b    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                  IMPRIME   0x000034    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                   INICIO   0x000013    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                     LOOP   0x000042    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+             MODO_COMANDO   0x00002e    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                MODO_DATO   0x000031    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                  PULSO35   0x00003f    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                     TOPE   0x000046    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                    TOPEH   0x000048    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000013    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+             MODO_COMANDO   0x00002e    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                MODO_DATO   0x000031    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                  IMPRIME   0x000034    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                   BORRAR   0x000037    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                  PULSO35   0x00003f    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                     LOOP   0x000042    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                     TOPE   0x000046    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                    TOPEH   0x000048    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+                      FIN   0x00004b    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\LCD PIC84.ASM
+
+

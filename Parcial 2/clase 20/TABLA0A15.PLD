@@ -1,0 +1,29 @@
+Name     TABLA0a15 ;
+PartNo   00 ;
+Date     05/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+PIN [2..5] = [E0..3];
+
+/*SALIDA*/
+
+PIN 23 = S;
+
+FIELD ENTRADA = [E0..3];
+FIELD SALIDA = S;
+
+TABLE ENTRADA=>SALIDA{
+'H'0=>'B'0;
+'H'A=>'B'1;
+'H'B=>'B'1;
+'H'C=>'B'1;
+'H'D=>'B'1;
+'H'E=>'B'1;
+'H'F=>'B'1;
+}

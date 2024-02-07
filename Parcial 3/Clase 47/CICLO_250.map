@@ -1,0 +1,35 @@
+MPLINK 4.48, Linker
+Linker Map File - Created Tue Dec 14 10:41:35 2021
+
+                                 Section Info
+                  Section       Type    Address   Location Size(Bytes)
+                ---------  ---------  ---------  ---------  ---------
+                   .org_0       code   0x000000    program   0x000018
+
+
+
+                              Program Memory Usage 
+                               Start         End      
+                           ---------   ---------      
+                            0x000000    0x00000b      
+            12 out of 1094 program addresses used, program memory utilization is 1%
+
+
+
+                              Symbols - Sorted by Name
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                 CICLO250   0x000007    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+                   INICIO   0x000004    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+                     LOOP   0x000009    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+
+
+
+                              Symbols - Sorted by Address
+                     Name    Address   Location    Storage File                     
+                ---------  ---------  ---------  --------- ---------                
+                   INICIO   0x000004    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+                 CICLO250   0x000007    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+                     LOOP   0x000009    program     static C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 47\CICLO_250.asm
+
+

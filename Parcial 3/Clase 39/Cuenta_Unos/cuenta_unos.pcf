@@ -1,0 +1,24 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Thu Nov 18 13:05:48 2021
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "Entrada<0>" LOCATE = SITE "P11" LEVEL 1;
+COMP "Entrada<1>" LOCATE = SITE "L3" LEVEL 1;
+COMP "Entrada<2>" LOCATE = SITE "K3" LEVEL 1;
+COMP "Entrada<3>" LOCATE = SITE "B4" LEVEL 1;
+COMP "z" LOCATE = SITE "M5" LEVEL 1;
+COMP "habilita0" LOCATE = SITE "K14" LEVEL 1;
+COMP "habilita1" LOCATE = SITE "M13" LEVEL 1;
+COMP "habilita2" LOCATE = SITE "J12" LEVEL 1;
+COMP "habilita3" LOCATE = SITE "F12" LEVEL 1;
+COMP "Salida<0>" LOCATE = SITE "L14" LEVEL 1;
+COMP "Salida<1>" LOCATE = SITE "H12" LEVEL 1;
+COMP "Salida<2>" LOCATE = SITE "N14" LEVEL 1;
+COMP "Salida<3>" LOCATE = SITE "N11" LEVEL 1;
+COMP "Salida<4>" LOCATE = SITE "P12" LEVEL 1;
+COMP "Salida<5>" LOCATE = SITE "L13" LEVEL 1;
+COMP "Salida<6>" LOCATE = SITE "M12" LEVEL 1;
+COMP "Salida<7>" LOCATE = SITE "N13" LEVEL 1;
+SCHEMATIC END;
+

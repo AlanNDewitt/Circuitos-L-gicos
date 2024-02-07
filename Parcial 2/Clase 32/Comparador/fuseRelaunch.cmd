@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test_isim_beh.exe" -prj "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test_beh.prj" "work.comparador_test" "work.glbl" 

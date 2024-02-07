@@ -1,0 +1,22 @@
+Name     GAL22V10LATCH_23_2 ;
+PartNo   00 ;
+Date     06/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+  
+PIN 1=clk;
+PIN [2..5]=[i0..i3];
+
+
+PIN [23..16] = [q0..7]; 
+q0.D=i2&!i1#(i1$i0);
+
+
+q1.D=!i3#i3&!12&!i1;
+
+

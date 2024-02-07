@@ -1,0 +1,41 @@
+Name     Contador0a7 ;
+PartNo   00 ;
+Date     07/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+
+/* *************** INPUT PINS  *********************/  
+PIN 	1=CLK;
+/* *************** OUTPUT PINS *********************/
+PIN    [17..14] = [q3..0];
+/* *************** Generar campos*******************/
+$define e0 'h'0
+$define e1 'h'1 
+$define e2 'h'2 
+$define e3 'h'3
+$define e4 'h'4
+$define e5 'h'5
+$define e6 'h'6
+$define e7 'b'111
+
+
+FIELD estados= [q3..0];   /*Largo de salida del estado*/
+
+SEQUENCE estados {
+PRESENT e0 NEXT e1;
+PRESENT e1 NEXT e2;
+PRESENT e2 NEXT e3;
+PRESENT e3 NEXT e4;
+PRESENT e4 NEXT e5;
+PRESENT e5 NEXT e6;
+PRESENT e6 NEXT e7;
+PRESENT e7 NEXT e0;
+
+}
+

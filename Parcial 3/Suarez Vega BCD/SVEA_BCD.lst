@@ -1,0 +1,960 @@
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[205]: Found directive in column 1. (processor)
+                      00001 processor 16F84A
+                      00002     #include <P16F84A.INC>
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+2007   3FF3           00003     __config _CP_OFF & _PWRTE_ON & _WDT_OFF & _RC_OSC ; 0x3FF3
+                      00004 
+                      00005 ; RAM-Variable
+  0000000C            00006 LRAM_0x0C equ 0x0C
+  0000000D            00007 LRAM_0x0D equ 0x0D
+  00000010            00008 LRAM_0x10 equ 0x10
+  00000011            00009 LRAM_0x11 equ 0x11
+  00000012            00010 LRAM_0x12 equ 0x12
+  00000013            00011 LRAM_0x13 equ 0x13
+  00000014            00012 LRAM_0x14 equ 0x14
+  00000015            00013 LRAM_0x15 equ 0x15
+  00000016            00014 LRAM_0x16 equ 0x16
+  00000017            00015 LRAM_0x17 equ 0x17
+  00000018            00016 LRAM_0x18 equ 0x18
+  00000019            00017 LRAM_0x19 equ 0x19
+                      00018 
+                      00019 ; Program
+                      00020 
+0000                  00021     Org 0x0000
+                      00022 
+                      00023 ;   Reset-Vector
+0000   3002           00024     MOVLW 0x02           ;   b'00000010'  d'002'
+0001   008A           00025     MOVWF PCLATH         ; !!Bank Program-Page-Select
+0002   2A31           00026     GOTO LADR_0x0231
+0003   0000           00027     NOP
+                      00028 ;   Interrupt-Vector
+0004                  00029 LADR_0x0004
+0004   1683           00030     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0005   1006           00031     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0006   1283           00032     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0007   1006           00033     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0008   1683           00034     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0009   1086           00035     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+000A   1283           00036     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+000B   1086           00037     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+000C   1683           00038     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+000D   1106           00039     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+000E   1283           00040     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+000F   1106           00041     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+0010   1683           00042     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0011   1186           00043     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0012   1283           00044     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0013   1186           00045     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0014   1683           00046     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0015   1206           00047     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0016   1283           00048     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0017   1206           00049     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0018   1683           00050     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0019   1286           00051     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+001A   1283           00052     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+001B   1286           00053     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+001C   1683           00054     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+001D   1306           00055     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+001E   1283           00056     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+001F   1306           00057     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0020   1683           00058     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0021   1386           00059     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0022   1283           00060     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0023   1386           00061     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0024   0008           00062     RETURN
+0025                  00063 LADR_0x0025
+0025   1683           00064     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0026   1405           00065     BSF PORTA,0          ; !!Bank!! PORTA - TRISA
+0027   1283           00066     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0028   1C05           00067     BTFSS PORTA,0        ; !!Bank!! PORTA - TRISA
+0029   2837           00068     GOTO LADR_0x0037
+002A   1683           00069     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+002B   1485           00070     BSF PORTA,1          ; !!Bank!! PORTA - TRISA
+002C   1283           00071     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+002D   1885           00072     BTFSC PORTA,1        ; !!Bank!! PORTA - TRISA
+002E   2837           00073     GOTO LADR_0x0037
+002F   1683           00074     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0030   1505           00075     BSF PORTA,2          ; !!Bank!! PORTA - TRISA
+0031   1283           00076     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0032   1905           00077     BTFSC PORTA,2        ; !!Bank!! PORTA - TRISA
+0033   2837           00078     GOTO LADR_0x0037
+0034   3001           00079     MOVLW 0x01           ;   b'00000001'  d'001'
+0035   008D           00080     MOVWF LRAM_0x0D
+0036   285A           00081     GOTO LADR_0x005A
+0037                  00082 LADR_0x0037
+0037   1683           00083     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0038   1405           00084     BSF PORTA,0          ; !!Bank!! PORTA - TRISA
+0039   1283           00085     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+003A   1805           00086     BTFSC PORTA,0        ; !!Bank!! PORTA - TRISA
+003B   2849           00087     GOTO LADR_0x0049
+003C   1683           00088     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+003D   1485           00089     BSF PORTA,1          ; !!Bank!! PORTA - TRISA
+003E   1283           00090     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+003F   1C85           00091     BTFSS PORTA,1        ; !!Bank!! PORTA - TRISA
+0040   2849           00092     GOTO LADR_0x0049
+0041   1683           00093     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0042   1505           00094     BSF PORTA,2          ; !!Bank!! PORTA - TRISA
+0043   1283           00095     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0044   1905           00096     BTFSC PORTA,2        ; !!Bank!! PORTA - TRISA
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0045   2849           00097     GOTO LADR_0x0049
+0046   3002           00098     MOVLW 0x02           ;   b'00000010'  d'002'
+0047   008D           00099     MOVWF LRAM_0x0D
+0048   285A           00100     GOTO LADR_0x005A
+0049                  00101 LADR_0x0049
+0049   1683           00102     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+004A   1405           00103     BSF PORTA,0          ; !!Bank!! PORTA - TRISA
+004B   1283           00104     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+004C   1805           00105     BTFSC PORTA,0        ; !!Bank!! PORTA - TRISA
+004D   285A           00106     GOTO LADR_0x005A
+004E   1683           00107     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+004F   1485           00108     BSF PORTA,1          ; !!Bank!! PORTA - TRISA
+0050   1283           00109     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0051   1885           00110     BTFSC PORTA,1        ; !!Bank!! PORTA - TRISA
+0052   285A           00111     GOTO LADR_0x005A
+0053   1683           00112     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0054   1505           00113     BSF PORTA,2          ; !!Bank!! PORTA - TRISA
+0055   1283           00114     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0056   1D05           00115     BTFSS PORTA,2        ; !!Bank!! PORTA - TRISA
+0057   285A           00116     GOTO LADR_0x005A
+0058   3003           00117     MOVLW 0x03           ;   b'00000011'  d'003'
+0059   008D           00118     MOVWF LRAM_0x0D
+005A                  00119 LADR_0x005A
+005A   2A40           00120     GOTO LADR_0x0240
+005B                  00121 LADR_0x005B
+005B   0818           00122     MOVF LRAM_0x18,W
+005C   018D           00123     CLRF LRAM_0x0D
+005D   0217           00124     SUBWF LRAM_0x17,W
+005E   1803           00125     BTFSC STATUS,C
+005F   2863           00126     GOTO LADR_0x0063
+0060   0817           00127     MOVF LRAM_0x17,W
+0061   008C           00128     MOVWF LRAM_0x0C
+0062   286F           00129     GOTO LADR_0x006F
+0063                  00130 LADR_0x0063
+0063   018C           00131     CLRF LRAM_0x0C
+0064   3008           00132     MOVLW 0x08           ;   b'00001000'  d'008'
+0065   0099           00133     MOVWF LRAM_0x19
+0066                  00134 LADR_0x0066
+0066   0D97           00135     RLF LRAM_0x17,F
+0067   0D8C           00136     RLF LRAM_0x0C,F
+0068   0818           00137     MOVF LRAM_0x18,W
+0069   020C           00138     SUBWF LRAM_0x0C,W
+006A   1803           00139     BTFSC STATUS,C
+006B   008C           00140     MOVWF LRAM_0x0C
+006C   0D8D           00141     RLF LRAM_0x0D,F
+006D   0B99           00142     DECFSZ LRAM_0x19,F
+006E   2866           00143     GOTO LADR_0x0066
+006F                  00144 LADR_0x006F
+006F   0008           00145     RETURN
+0070                  00146 LADR_0x0070
+0070   0816           00147     MOVF LRAM_0x16,W
+0071   0097           00148     MOVWF LRAM_0x17
+0072   300A           00149     MOVLW 0x0A           ;   b'00001010'  d'010'
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0073   0098           00150     MOVWF LRAM_0x18
+0074   205B           00151     CALL LADR_0x005B
+0075   080D           00152     MOVF LRAM_0x0D,W
+0076   0093           00153     MOVWF LRAM_0x13
+0077   0816           00154     MOVF LRAM_0x16,W
+0078   0097           00155     MOVWF LRAM_0x17
+0079   300A           00156     MOVLW 0x0A           ;   b'00001010'  d'010'
+007A   0098           00157     MOVWF LRAM_0x18
+007B   205B           00158     CALL LADR_0x005B
+007C   080C           00159     MOVF LRAM_0x0C,W
+007D   0094           00160     MOVWF LRAM_0x14
+007E   0813           00161     MOVF LRAM_0x13,W
+007F   0097           00162     MOVWF LRAM_0x17
+0080   0817           00163     MOVF LRAM_0x17,W
+0081   0091           00164     MOVWF LRAM_0x11
+0082   0891           00165     MOVF LRAM_0x11,F
+0083   1D03           00166     BTFSS STATUS,Z
+0084   2895           00167     GOTO LADR_0x0095
+0085   1683           00168     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0086   1206           00169     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0087   1283           00170     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0088   1206           00171     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0089   1683           00172     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+008A   1286           00173     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+008B   1283           00174     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+008C   1286           00175     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+008D   1683           00176     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+008E   1306           00177     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+008F   1283           00178     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0090   1306           00179     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0091   1683           00180     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0092   1386           00181     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0093   1283           00182     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0094   1386           00183     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0095                  00184 LADR_0x0095
+0095   0B11           00185     DECFSZ LRAM_0x11,W
+0096   28A7           00186     GOTO LADR_0x00A7
+0097   1683           00187     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0098   1206           00188     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0099   1283           00189     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+009A   1606           00190     BSF PORTB,4          ; !!Bank!! PORTB - TRISB
+009B   1683           00191     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+009C   1286           00192     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+009D   1283           00193     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+009E   1286           00194     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+009F   1683           00195     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00A0   1306           00196     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00A1   1283           00197     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00A2   1306           00198     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00A3   1683           00199     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00A4   1386           00200     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00A5   1283           00201     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00A6   1386           00202     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  5
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00A7                  00203 LADR_0x00A7
+00A7   0811           00204     MOVF LRAM_0x11,W
+00A8   3C02           00205     SUBLW 0x02           ;   b'00000010'  d'002'
+00A9   1D03           00206     BTFSS STATUS,Z
+00AA   28BB           00207     GOTO LADR_0x00BB
+00AB   1683           00208     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00AC   1206           00209     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00AD   1283           00210     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00AE   1206           00211     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00AF   1683           00212     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00B0   1286           00213     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+00B1   1283           00214     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00B2   1686           00215     BSF PORTB,5          ; !!Bank!! PORTB - TRISB
+00B3   1683           00216     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00B4   1306           00217     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00B5   1283           00218     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00B6   1306           00219     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00B7   1683           00220     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00B8   1386           00221     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00B9   1283           00222     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00BA   1386           00223     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00BB                  00224 LADR_0x00BB
+00BB   0811           00225     MOVF LRAM_0x11,W
+00BC   3C03           00226     SUBLW 0x03           ;   b'00000011'  d'003'
+00BD   1D03           00227     BTFSS STATUS,Z
+00BE   28CF           00228     GOTO LADR_0x00CF
+00BF   1683           00229     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00C0   1206           00230     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00C1   1283           00231     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00C2   1606           00232     BSF PORTB,4          ; !!Bank!! PORTB - TRISB
+00C3   1683           00233     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00C4   1286           00234     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+00C5   1283           00235     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00C6   1686           00236     BSF PORTB,5          ; !!Bank!! PORTB - TRISB
+00C7   1683           00237     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00C8   1306           00238     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00C9   1283           00239     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00CA   1306           00240     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00CB   1683           00241     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00CC   1386           00242     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00CD   1283           00243     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00CE   1386           00244     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00CF                  00245 LADR_0x00CF
+00CF   0811           00246     MOVF LRAM_0x11,W
+00D0   3C04           00247     SUBLW 0x04           ;   b'00000100'  d'004'
+00D1   1D03           00248     BTFSS STATUS,Z
+00D2   28E3           00249     GOTO LADR_0x00E3
+00D3   1683           00250     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00D4   1206           00251     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00D5   1283           00252     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00D6   1206           00253     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00D7   1683           00254     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00D8   1286           00255     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  6
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+00D9   1283           00256     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00DA   1286           00257     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+00DB   1683           00258     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00DC   1306           00259     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00DD   1283           00260     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00DE   1706           00261     BSF PORTB,6          ; !!Bank!! PORTB - TRISB
+00DF   1683           00262     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00E0   1386           00263     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00E1   1283           00264     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00E2   1386           00265     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00E3                  00266 LADR_0x00E3
+00E3   0811           00267     MOVF LRAM_0x11,W
+00E4   3C05           00268     SUBLW 0x05           ;   b'00000101'  d'005'
+00E5   1D03           00269     BTFSS STATUS,Z
+00E6   28F7           00270     GOTO LADR_0x00F7
+00E7   1683           00271     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00E8   1206           00272     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00E9   1283           00273     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00EA   1606           00274     BSF PORTB,4          ; !!Bank!! PORTB - TRISB
+00EB   1683           00275     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00EC   1286           00276     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+00ED   1283           00277     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00EE   1286           00278     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+00EF   1683           00279     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00F0   1306           00280     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+00F1   1283           00281     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00F2   1706           00282     BSF PORTB,6          ; !!Bank!! PORTB - TRISB
+00F3   1683           00283     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00F4   1386           00284     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00F5   1283           00285     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00F6   1386           00286     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+00F7                  00287 LADR_0x00F7
+00F7   0811           00288     MOVF LRAM_0x11,W
+00F8   3C06           00289     SUBLW 0x06           ;   b'00000110'  d'006'
+00F9   1D03           00290     BTFSS STATUS,Z
+00FA   290B           00291     GOTO LADR_0x010B
+00FB   1683           00292     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00FC   1206           00293     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00FD   1283           00294     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+00FE   1206           00295     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+00FF   1683           00296     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0100   1286           00297     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+0101   1283           00298     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0102   1686           00299     BSF PORTB,5          ; !!Bank!! PORTB - TRISB
+0103   1683           00300     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0104   1306           00301     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0105   1283           00302     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0106   1706           00303     BSF PORTB,6          ; !!Bank!! PORTB - TRISB
+0107   1683           00304     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0108   1386           00305     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0109   1283           00306     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+010A   1386           00307     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+010B                  00308 LADR_0x010B
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  7
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+010B   0811           00309     MOVF LRAM_0x11,W
+010C   3C07           00310     SUBLW 0x07           ;   b'00000111'  d'007'
+010D   1D03           00311     BTFSS STATUS,Z
+010E   291F           00312     GOTO LADR_0x011F
+010F   1683           00313     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0110   1206           00314     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0111   1283           00315     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0112   1606           00316     BSF PORTB,4          ; !!Bank!! PORTB - TRISB
+0113   1683           00317     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0114   1286           00318     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+0115   1283           00319     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0116   1686           00320     BSF PORTB,5          ; !!Bank!! PORTB - TRISB
+0117   1683           00321     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0118   1306           00322     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0119   1283           00323     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+011A   1706           00324     BSF PORTB,6          ; !!Bank!! PORTB - TRISB
+011B   1683           00325     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+011C   1386           00326     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+011D   1283           00327     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+011E   1386           00328     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+011F                  00329 LADR_0x011F
+011F   0811           00330     MOVF LRAM_0x11,W
+0120   3C08           00331     SUBLW 0x08           ;   b'00001000'  d'008'
+0121   1D03           00332     BTFSS STATUS,Z
+0122   2933           00333     GOTO LADR_0x0133
+0123   1683           00334     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0124   1206           00335     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0125   1283           00336     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0126   1206           00337     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0127   1683           00338     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0128   1286           00339     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+0129   1283           00340     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+012A   1286           00341     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+012B   1683           00342     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+012C   1306           00343     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+012D   1283           00344     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+012E   1306           00345     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+012F   1683           00346     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0130   1386           00347     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0131   1283           00348     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0132   1786           00349     BSF PORTB,7          ; !!Bank!! PORTB - TRISB
+0133                  00350 LADR_0x0133
+0133   0811           00351     MOVF LRAM_0x11,W
+0134   3C09           00352     SUBLW 0x09           ;   b'00001001'  d'009'
+0135   1D03           00353     BTFSS STATUS,Z
+0136   2947           00354     GOTO LADR_0x0147
+0137   1683           00355     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0138   1206           00356     BCF PORTB,4          ; !!Bank!! PORTB - TRISB
+0139   1283           00357     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+013A   1606           00358     BSF PORTB,4          ; !!Bank!! PORTB - TRISB
+013B   1683           00359     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+013C   1286           00360     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+013D   1283           00361     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  8
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+013E   1286           00362     BCF PORTB,5          ; !!Bank!! PORTB - TRISB
+013F   1683           00363     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0140   1306           00364     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0141   1283           00365     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0142   1306           00366     BCF PORTB,6          ; !!Bank!! PORTB - TRISB
+0143   1683           00367     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0144   1386           00368     BCF PORTB,7          ; !!Bank!! PORTB - TRISB
+0145   1283           00369     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0146   1786           00370     BSF PORTB,7          ; !!Bank!! PORTB - TRISB
+0147                  00371 LADR_0x0147
+0147   0814           00372     MOVF LRAM_0x14,W
+0148   0097           00373     MOVWF LRAM_0x17
+0149   0817           00374     MOVF LRAM_0x17,W
+014A   0092           00375     MOVWF LRAM_0x12
+014B   0892           00376     MOVF LRAM_0x12,F
+014C   1D03           00377     BTFSS STATUS,Z
+014D   295E           00378     GOTO LADR_0x015E
+014E   1683           00379     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+014F   1006           00380     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0150   1283           00381     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0151   1006           00382     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0152   1683           00383     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0153   1086           00384     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+0154   1283           00385     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0155   1086           00386     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+0156   1683           00387     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0157   1106           00388     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+0158   1283           00389     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0159   1106           00390     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+015A   1683           00391     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+015B   1186           00392     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+015C   1283           00393     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+015D   1186           00394     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+015E                  00395 LADR_0x015E
+015E   0B12           00396     DECFSZ LRAM_0x12,W
+015F   2970           00397     GOTO LADR_0x0170
+0160   1683           00398     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0161   1006           00399     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0162   1283           00400     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0163   1406           00401     BSF PORTB,0          ; !!Bank!! PORTB - TRISB
+0164   1683           00402     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0165   1086           00403     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+0166   1283           00404     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0167   1086           00405     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+0168   1683           00406     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0169   1106           00407     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+016A   1283           00408     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+016B   1106           00409     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+016C   1683           00410     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+016D   1186           00411     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+016E   1283           00412     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+016F   1186           00413     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0170                  00414 LADR_0x0170
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE  9
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0170   0812           00415     MOVF LRAM_0x12,W
+0171   3C02           00416     SUBLW 0x02           ;   b'00000010'  d'002'
+0172   1D03           00417     BTFSS STATUS,Z
+0173   2984           00418     GOTO LADR_0x0184
+0174   1683           00419     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0175   1006           00420     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0176   1283           00421     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0177   1006           00422     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0178   1683           00423     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0179   1086           00424     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+017A   1283           00425     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+017B   1486           00426     BSF PORTB,1          ; !!Bank!! PORTB - TRISB
+017C   1683           00427     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+017D   1106           00428     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+017E   1283           00429     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+017F   1106           00430     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+0180   1683           00431     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0181   1186           00432     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0182   1283           00433     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0183   1186           00434     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0184                  00435 LADR_0x0184
+0184   0812           00436     MOVF LRAM_0x12,W
+0185   3C03           00437     SUBLW 0x03           ;   b'00000011'  d'003'
+0186   1D03           00438     BTFSS STATUS,Z
+0187   2998           00439     GOTO LADR_0x0198
+0188   1683           00440     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0189   1006           00441     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+018A   1283           00442     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+018B   1406           00443     BSF PORTB,0          ; !!Bank!! PORTB - TRISB
+018C   1683           00444     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+018D   1086           00445     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+018E   1283           00446     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+018F   1486           00447     BSF PORTB,1          ; !!Bank!! PORTB - TRISB
+0190   1683           00448     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0191   1106           00449     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+0192   1283           00450     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0193   1106           00451     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+0194   1683           00452     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0195   1186           00453     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0196   1283           00454     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0197   1186           00455     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+0198                  00456 LADR_0x0198
+0198   0812           00457     MOVF LRAM_0x12,W
+0199   3C04           00458     SUBLW 0x04           ;   b'00000100'  d'004'
+019A   1D03           00459     BTFSS STATUS,Z
+019B   29AC           00460     GOTO LADR_0x01AC
+019C   1683           00461     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+019D   1006           00462     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+019E   1283           00463     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+019F   1006           00464     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01A0   1683           00465     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01A1   1086           00466     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01A2   1283           00467     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 10
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01A3   1086           00468     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01A4   1683           00469     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01A5   1106           00470     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01A6   1283           00471     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01A7   1506           00472     BSF PORTB,2          ; !!Bank!! PORTB - TRISB
+01A8   1683           00473     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01A9   1186           00474     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01AA   1283           00475     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01AB   1186           00476     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01AC                  00477 LADR_0x01AC
+01AC   0812           00478     MOVF LRAM_0x12,W
+01AD   3C05           00479     SUBLW 0x05           ;   b'00000101'  d'005'
+01AE   1D03           00480     BTFSS STATUS,Z
+01AF   29C0           00481     GOTO LADR_0x01C0
+01B0   1683           00482     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01B1   1006           00483     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01B2   1283           00484     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01B3   1406           00485     BSF PORTB,0          ; !!Bank!! PORTB - TRISB
+01B4   1683           00486     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01B5   1086           00487     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01B6   1283           00488     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01B7   1086           00489     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01B8   1683           00490     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01B9   1106           00491     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01BA   1283           00492     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01BB   1506           00493     BSF PORTB,2          ; !!Bank!! PORTB - TRISB
+01BC   1683           00494     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01BD   1186           00495     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01BE   1283           00496     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01BF   1186           00497     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01C0                  00498 LADR_0x01C0
+01C0   0812           00499     MOVF LRAM_0x12,W
+01C1   3C06           00500     SUBLW 0x06           ;   b'00000110'  d'006'
+01C2   1D03           00501     BTFSS STATUS,Z
+01C3   29D4           00502     GOTO LADR_0x01D4
+01C4   1683           00503     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01C5   1006           00504     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01C6   1283           00505     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01C7   1006           00506     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01C8   1683           00507     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01C9   1086           00508     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01CA   1283           00509     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01CB   1486           00510     BSF PORTB,1          ; !!Bank!! PORTB - TRISB
+01CC   1683           00511     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01CD   1106           00512     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01CE   1283           00513     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01CF   1506           00514     BSF PORTB,2          ; !!Bank!! PORTB - TRISB
+01D0   1683           00515     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01D1   1186           00516     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01D2   1283           00517     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01D3   1186           00518     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01D4                  00519 LADR_0x01D4
+01D4   0812           00520     MOVF LRAM_0x12,W
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 11
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+01D5   3C07           00521     SUBLW 0x07           ;   b'00000111'  d'007'
+01D6   1D03           00522     BTFSS STATUS,Z
+01D7   29E8           00523     GOTO LADR_0x01E8
+01D8   1683           00524     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01D9   1006           00525     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01DA   1283           00526     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01DB   1406           00527     BSF PORTB,0          ; !!Bank!! PORTB - TRISB
+01DC   1683           00528     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01DD   1086           00529     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01DE   1283           00530     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01DF   1486           00531     BSF PORTB,1          ; !!Bank!! PORTB - TRISB
+01E0   1683           00532     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01E1   1106           00533     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01E2   1283           00534     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01E3   1506           00535     BSF PORTB,2          ; !!Bank!! PORTB - TRISB
+01E4   1683           00536     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01E5   1186           00537     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01E6   1283           00538     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01E7   1186           00539     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01E8                  00540 LADR_0x01E8
+01E8   0812           00541     MOVF LRAM_0x12,W
+01E9   3C08           00542     SUBLW 0x08           ;   b'00001000'  d'008'
+01EA   1D03           00543     BTFSS STATUS,Z
+01EB   29FC           00544     GOTO LADR_0x01FC
+01EC   1683           00545     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01ED   1006           00546     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01EE   1283           00547     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01EF   1006           00548     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+01F0   1683           00549     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01F1   1086           00550     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01F2   1283           00551     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01F3   1086           00552     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+01F4   1683           00553     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01F5   1106           00554     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01F6   1283           00555     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01F7   1106           00556     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+01F8   1683           00557     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01F9   1186           00558     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+01FA   1283           00559     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+01FB   1586           00560     BSF PORTB,3          ; !!Bank!! PORTB - TRISB
+01FC                  00561 LADR_0x01FC
+01FC   0812           00562     MOVF LRAM_0x12,W
+01FD   3C09           00563     SUBLW 0x09           ;   b'00001001'  d'009'
+01FE   1D03           00564     BTFSS STATUS,Z
+01FF   2A10           00565     GOTO LADR_0x0210
+0200   1683           00566     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0201   1006           00567     BCF PORTB,0          ; !!Bank!! PORTB - TRISB
+0202   1283           00568     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0203   1406           00569     BSF PORTB,0          ; !!Bank!! PORTB - TRISB
+0204   1683           00570     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0205   1086           00571     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+0206   1283           00572     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0207   1086           00573     BCF PORTB,1          ; !!Bank!! PORTB - TRISB
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 12
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0208   1683           00574     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0209   1106           00575     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+020A   1283           00576     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+020B   1106           00577     BCF PORTB,2          ; !!Bank!! PORTB - TRISB
+020C   1683           00578     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+020D   1186           00579     BCF PORTB,3          ; !!Bank!! PORTB - TRISB
+020E   1283           00580     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+020F   1586           00581     BSF PORTB,3          ; !!Bank!! PORTB - TRISB
+0210                  00582 LADR_0x0210
+0210   0008           00583     RETURN
+0211                  00584 LADR_0x0211
+0211   0810           00585     MOVF LRAM_0x10,W
+0212   3C63           00586     SUBLW 0x63           ;   b'01100011'  d'099'  "c"
+0213   1D03           00587     BTFSS STATUS,Z
+0214   2A1A           00588     GOTO LADR_0x021A
+0215   3063           00589     MOVLW 0x63           ;   b'01100011'  d'099'  "c"
+0216   0090           00590     MOVWF LRAM_0x10
+0217   0810           00591     MOVF LRAM_0x10,W
+0218   0096           00592     MOVWF LRAM_0x16
+0219   2070           00593     CALL LADR_0x0070
+021A                  00594 LADR_0x021A
+021A   0810           00595     MOVF LRAM_0x10,W
+021B   0096           00596     MOVWF LRAM_0x16
+021C   2070           00597     CALL LADR_0x0070
+021D   3001           00598     MOVLW 0x01           ;   b'00000001'  d'001'
+021E   0790           00599     ADDWF LRAM_0x10,F
+021F   2A45           00600     GOTO LADR_0x0245
+0220                  00601 LADR_0x0220
+0220   0890           00602     MOVF LRAM_0x10,F
+0221   1D03           00603     BTFSS STATUS,Z
+0222   2A27           00604     GOTO LADR_0x0227
+0223   0190           00605     CLRF LRAM_0x10
+0224   0810           00606     MOVF LRAM_0x10,W
+0225   0096           00607     MOVWF LRAM_0x16
+0226   2070           00608     CALL LADR_0x0070
+0227                  00609 LADR_0x0227
+0227   0810           00610     MOVF LRAM_0x10,W
+0228   3C63           00611     SUBLW 0x63           ;   b'01100011'  d'099'  "c"
+0229   1C03           00612     BTFSS STATUS,C
+022A   2A30           00613     GOTO LADR_0x0230
+022B   0810           00614     MOVF LRAM_0x10,W
+022C   0096           00615     MOVWF LRAM_0x16
+022D   2070           00616     CALL LADR_0x0070
+022E   3001           00617     MOVLW 0x01           ;   b'00000001'  d'001'
+022F   0290           00618     SUBWF LRAM_0x10,F
+0230                  00619 LADR_0x0230
+0230   2A49           00620     GOTO LADR_0x0249
+0231                  00621 LADR_0x0231
+0231   0803           00622     MOVF STATUS,W
+0232   391F           00623     ANDLW 0x1F           ;   b'00011111'  d'031'
+0233   0083           00624     MOVWF STATUS
+0234   0190           00625     CLRF LRAM_0x10
+0235   0191           00626     CLRF LRAM_0x11
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 13
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0236   0192           00627     CLRF LRAM_0x12
+0237   0193           00628     CLRF LRAM_0x13
+0238   0194           00629     CLRF LRAM_0x14
+0239   0195           00630     CLRF LRAM_0x15
+023A   2004           00631     CALL LADR_0x0004
+023B                  00632 LADR_0x023B
+023B   0810           00633     MOVF LRAM_0x10,W
+023C   3C63           00634     SUBLW 0x63           ;   b'01100011'  d'099'  "c"
+023D   1C03           00635     BTFSS STATUS,C
+023E   2A51           00636     GOTO LADR_0x0251
+023F   2825           00637     GOTO LADR_0x0025
+0240                  00638 LADR_0x0240
+0240   080D           00639     MOVF LRAM_0x0D,W
+0241   0095           00640     MOVWF LRAM_0x15
+0242   0B15           00641     DECFSZ LRAM_0x15,W
+0243   2A45           00642     GOTO LADR_0x0245
+0244   2A11           00643     GOTO LADR_0x0211
+0245                  00644 LADR_0x0245
+0245   0815           00645     MOVF LRAM_0x15,W
+0246   3C02           00646     SUBLW 0x02           ;   b'00000010'  d'002'
+0247   1903           00647     BTFSC STATUS,Z
+0248   2A20           00648     GOTO LADR_0x0220
+0249                  00649 LADR_0x0249
+0249   0815           00650     MOVF LRAM_0x15,W
+024A   3C03           00651     SUBLW 0x03           ;   b'00000011'  d'003'
+024B   1903           00652     BTFSC STATUS,Z
+024C   2004           00653     CALL LADR_0x0004
+024D   1683           00654     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+024E   1205           00655     BCF PORTA,4          ; !!Bank!! PORTA - TRISA
+024F   1283           00656     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0250   1205           00657     BCF PORTA,4          ; !!Bank!! PORTA - TRISA
+0251                  00658 LADR_0x0251
+0251   0810           00659     MOVF LRAM_0x10,W
+0252   3C64           00660     SUBLW 0x64           ;   b'01100100'  d'100'  "d"
+0253   1D03           00661     BTFSS STATUS,Z
+0254   2A5B           00662     GOTO LADR_0x025B
+0255   3063           00663     MOVLW 0x63           ;   b'01100011'  d'099'  "c"
+0256   0090           00664     MOVWF LRAM_0x10
+0257   1683           00665     BSF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+0258   1205           00666     BCF PORTA,4          ; !!Bank!! PORTA - TRISA
+0259   1283           00667     BCF STATUS,RP0       ; !!Bank Register-Bank(0/1)-Select
+025A   1605           00668     BSF PORTA,4          ; !!Bank!! PORTA - TRISA
+025B                  00669 LADR_0x025B
+025B   2A3B           00670     GOTO LADR_0x023B
+025C   0063           00671     SLEEP
+                      00672 
+                      00673     End
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 14
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LADR_0x0004                       00000004
+LADR_0x0025                       00000025
+LADR_0x0037                       00000037
+LADR_0x0049                       00000049
+LADR_0x005A                       0000005A
+LADR_0x005B                       0000005B
+LADR_0x0063                       00000063
+LADR_0x0066                       00000066
+LADR_0x006F                       0000006F
+LADR_0x0070                       00000070
+LADR_0x0095                       00000095
+LADR_0x00A7                       000000A7
+LADR_0x00BB                       000000BB
+LADR_0x00CF                       000000CF
+LADR_0x00E3                       000000E3
+LADR_0x00F7                       000000F7
+LADR_0x010B                       0000010B
+LADR_0x011F                       0000011F
+LADR_0x0133                       00000133
+LADR_0x0147                       00000147
+LADR_0x015E                       0000015E
+LADR_0x0170                       00000170
+LADR_0x0184                       00000184
+LADR_0x0198                       00000198
+LADR_0x01AC                       000001AC
+LADR_0x01C0                       000001C0
+LADR_0x01D4                       000001D4
+LADR_0x01E8                       000001E8
+LADR_0x01FC                       000001FC
+LADR_0x0210                       00000210
+LADR_0x0211                       00000211
+LADR_0x021A                       0000021A
+LADR_0x0220                       00000220
+LADR_0x0227                       00000227
+LADR_0x0230                       00000230
+LADR_0x0231                       00000231
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 15
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+LADR_0x023B                       0000023B
+LADR_0x0240                       00000240
+LADR_0x0245                       00000245
+LADR_0x0249                       00000249
+LADR_0x0251                       00000251
+LADR_0x025B                       0000025B
+LRAM_0x0C                         0000000C
+LRAM_0x0D                         0000000D
+LRAM_0x10                         00000010
+LRAM_0x11                         00000011
+LRAM_0x12                         00000012
+LRAM_0x13                         00000013
+LRAM_0x14                         00000014
+LRAM_0x15                         00000015
+LRAM_0x16                         00000016
+LRAM_0x17                         00000017
+LRAM_0x18                         00000018
+LRAM_0x19                         00000019
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 16
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+MPASM  5.50                      SVEA_BCD.ASM   12-15-2021  21:06:11         PAGE 17
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0080 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+00C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0100 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0140 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0180 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+01C0 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0200 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0240 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXX--- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:   605
+Program Memory Words Free:   419
+
+
+Errors   :     0
+Warnings :     1 reported,     0 suppressed
+Messages :     0 reported,     0 suppressed
+
+

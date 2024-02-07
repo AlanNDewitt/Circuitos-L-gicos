@@ -1,0 +1,375 @@
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include "P16F84a.INC" 
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+  00000020            00002 CONTADOR EQU 0x20
+  00000021            00003 CONTADOR2 EQU 0X21
+  00000022            00004 TEMP EQU 0X22
+  00000023            00005 TEMP2 EQU 0X23
+  00000024            00006 POS_PANT EQU 0X24
+  00000025            00007 REGISTROS EQU 0X25
+  00000026            00008 RETARDO EQU 0X26
+Warning[203]: Found opcode in column 1. (BSF)
+0000   1683           00009 BSF STATUS,RP0  ;IR AL BANCO 1
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0001   0186           00010 CLRF TRISB              ;PUERTO DE COMANDOS Y DATOS
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0185           00011 CLRF TRISA              ;PUERTO B Y A SEAN SALIDAS
+Warning[203]: Found opcode in column 1. (BSF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   1585           00012 BSF TRISA,3             ;RA3 ENTRADA
+Warning[203]: Found opcode in column 1. (BCF)
+0004   1283           00013 BCF STATUS,RP0  ;CERRAR PUERTO IR AL BANCO 0
+                      00014 ;BIT 0 DE PORTA ES MODO
+                      00015 ;CODIGO  OBLIGATORIO *************************************
+Warning[203]: Found opcode in column 1. (CALL)
+0005   202E           00016 CALL MODO_COMANDO
+Warning[203]: Found opcode in column 1. (MOVLW)
+0006   3030           00017 MOVLW B'00110000'       ;DL=BUS DE 8 Ó 4 BITS (USAMOS EL DE 8)
+Warning[203]: Found opcode in column 1. (MOVWF)
+0007   0086           00018 MOVWF PORTB                     ;N=NUMERO DE LINEAS
+Warning[203]: Found opcode in column 1. (CALL)
+0008   203F           00019 CALL PULSO35            ;F=TAMAÑO DE CARACTERES
+Warning[203]: Found opcode in column 1. (MOVLW)
+0009   300D           00020 MOVLW B'00001101';DISPLAY_CONTROL
+                      00021                                 ;|0|0|0|0|1|D|C|B|
+                      00022                                 ;D=PANTALLA ACTIVA
+Warning[203]: Found opcode in column 1. (MOVWF)
+000A   0086           00023 MOVWF PORTB     ;C=CURSOR ACTIVADO
+Warning[203]: Found opcode in column 1. (CALL)
+000B   203F           00024 CALL PULSO35    ;B=PARPADEA CURSOR
+                      00025                                 ;MODO_SET
+Warning[203]: Found opcode in column 1. (MOVLW)
+000C   3006           00026 MOVLW B'00000110'       ;|0|0|0|0|0|1|I\D|S
+Warning[203]: Found opcode in column 1. (MOVWF)
+000D   0086           00027 MOVWF PORTB             ;I\D=INCREMENTA CURSOR
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (CALL)
+000E   203F           00028 CALL PULSO35    ;S=DESPLAZAMIENTO DE VISUALIZACION
+Warning[203]: Found opcode in column 1. (MOVLW)
+000F   3083           00029 MOVLW 0X83              ;DDRAM ADRESS                           
+Warning[203]: Found opcode in column 1. (MOVWF)
+0010   0086           00030 MOVWF PORTB             ;"ADRESS"       
+Warning[203]: Found opcode in column 1. (CALL)
+0011   203F           00031 CALL PULSO35
+Warning[203]: Found opcode in column 1. (CALL)
+0012   2031           00032 CALL MODO_DATO  ;CODIGO  OBLIGATORIO **********************
+                      00033 ;**************************** PRINCIPAL
+0013                  00034 INICIO:
+Warning[203]: Found opcode in column 1. (NOP)
+0013   0000           00035 NOP
+Warning[203]: Found opcode in column 1. (MOVLW)
+0014   3023           00036 MOVLW '#'
+Warning[203]: Found opcode in column 1. (CALL)
+0015   2034           00037 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+0016   3053           00038 MOVLW 'S'
+Warning[203]: Found opcode in column 1. (CALL)
+0017   2034           00039 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+0018   3056           00040 MOVLW 'V'
+Warning[203]: Found opcode in column 1. (CALL)
+0019   2034           00041 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+001A   3045           00042 MOVLW 'E'
+Warning[203]: Found opcode in column 1. (CALL)
+001B   2034           00043 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+001C   3041           00044 MOVLW 'A'
+Warning[203]: Found opcode in column 1. (CALL)
+001D   2034           00045 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+001E   3023           00046 MOVLW '#'
+Warning[203]: Found opcode in column 1. (CALL)
+001F   2034           00047 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+0020   30E0           00048 MOVLW 0xE0        ;VER EL MANUAL
+Warning[203]: Found opcode in column 1. (CALL)
+0021   2034           00049 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+0022   302E           00050 MOVLW '.'
+Warning[203]: Found opcode in column 1. (CALL)
+0023   2034           00051 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (CALL)
+0024   2046           00052 CALL TOPE
+Warning[203]: Found opcode in column 1. (CALL)
+0025   2037           00053 CALL BORRAR
+Warning[203]: Found opcode in column 1. (CALL)
+0026   2046           00054 CALL TOPE
+Warning[203]: Found opcode in column 1. (MOVLW)
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0027   30E0           00055 MOVLW 0xE0        ;VER EL MANUAL
+Warning[203]: Found opcode in column 1. (CALL)
+0028   2034           00056 CALL IMPRIME  ;IMPRESION
+Warning[203]: Found opcode in column 1. (MOVLW)
+0029   3032           00057 MOVLW '2'
+Warning[203]: Found opcode in column 1. (CALL)
+002A   2034           00058 CALL IMPRIME
+Warning[203]: Found opcode in column 1. (MOVLW)
+002B   3031           00059 MOVLW '1'
+Warning[203]: Found opcode in column 1. (CALL)
+002C   2034           00060 CALL IMPRIME
+Warning[203]: Found opcode in column 1. (CALL)
+002D   204B           00061 CALL FIN
+                      00062 ;******************************************************
+002E                  00063 MODO_COMANDO ;function_set ;"|0|0|1|dl|n|f|x|x|"
+Warning[203]: Found opcode in column 1. (BCF)
+002E   1005           00064 BCF PORTA,0
+Warning[203]: Found opcode in column 1. (CALL)
+002F   203F           00065 CALL PULSO35
+Warning[203]: Found opcode in column 1. (RETURN)
+0030   0008           00066 RETURN
+                      00067 
+0031                  00068 MODO_DATO
+Warning[203]: Found opcode in column 1. (BSF)
+0031   1405           00069 BSF PORTA,0     ;BIT RS DEL LCD
+Warning[203]: Found opcode in column 1. (CALL)
+0032   203F           00070 CALL PULSO35
+Warning[203]: Found opcode in column 1. (RETURN)
+0033   0008           00071 RETURN
+                      00072 
+0034                  00073 IMPRIME
+Warning[203]: Found opcode in column 1. (MOVWF)
+0034   0086           00074 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0035   203F           00075 CALL PULSO35
+Warning[203]: Found opcode in column 1. (RETURN)
+0036   0008           00076 RETURN
+                      00077 
+0037                  00078 BORRAR  
+Warning[203]: Found opcode in column 1. (MOVLW)
+0037   3001           00079 MOVLW 0X01               ;BORRAR
+Warning[203]: Found opcode in column 1. (MOVWF)
+0038   0086           00080 MOVWF PORTB
+Warning[203]: Found opcode in column 1. (CALL)
+0039   202E           00081 CALL MODO_COMANDO
+Warning[203]: Found opcode in column 1. (MOVLW)
+003A   3083           00082 MOVLW 0X83              ;DDRAM ADRESS                           
+Warning[203]: Found opcode in column 1. (MOVWF)
+003B   0086           00083 MOVWF PORTB             ;"ADRESS"
+Warning[203]: Found opcode in column 1. (CALL)
+003C   203F           00084 CALL PULSO35
+Warning[203]: Found opcode in column 1. (CALL)
+003D   2031           00085 CALL MODO_DATO
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  4
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+Warning[203]: Found opcode in column 1. (RETURN)
+003E   0008           00086 RETURN
+                      00087 
+003F                  00088 PULSO35
+Warning[203]: Found opcode in column 1. (BSF)
+003F   1485           00089 BSF PORTA,1 ;BIT DE E DE LA LCD =1
+Warning[203]: Found opcode in column 1. (MOVLW)
+0040   300B           00090 MOVLW 0XB       ;CARGAR A W CON 11
+Warning[203]: Found opcode in column 1. (MOVWF)
+0041   00A6           00091 MOVWF RETARDO ;MOVER A RETARDO
+0042                  00092 LOOP
+Warning[203]: Found opcode in column 1. (DECFSZ)
+0042   0BA6           00093 DECFSZ RETARDO,F
+Warning[203]: Found opcode in column 1. (GOTO)
+0043   2842           00094 GOTO LOOP
+Warning[203]: Found opcode in column 1. (BCF)
+0044   1085           00095 BCF PORTA,1 ;BIT DE E DE LA LCD =0
+Warning[203]: Found opcode in column 1. (RETURN)
+0045   0008           00096 RETURN
+                      00097 
+0046                  00098 TOPE
+Warning[203]: Found opcode in column 1. (BTFSC)
+0046   1985           00099 BTFSC PORTA,3
+Warning[203]: Found opcode in column 1. (GOTO)
+0047   2846           00100 GOTO TOPE
+0048                  00101 TOPEH
+Warning[203]: Found opcode in column 1. (BTFSC)
+0048   1985           00102 BTFSC PORTA,3
+Warning[203]: Found opcode in column 1. (GOTO)
+0049   2848           00103 GOTO TOPEH
+Warning[203]: Found opcode in column 1. (RETURN)
+004A   0008           00104 RETURN
+                      00105 
+004B                  00106 FIN
+Warning[203]: Found opcode in column 1. (NOP)
+004B   0000           00107 NOP 
+Warning[203]: Found opcode in column 1. (GOTO)
+004C   284B           00108 GOTO FIN
+                      00109 
+Warning[205]: Found directive in column 1. (END)
+                      00110 END
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BORRAR                            00000037
+C                                 00000000
+CONTADOR                          00000020
+CONTADOR2                         00000021
+DC                                00000001
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FIN                               0000004B
+FSR                               00000004
+GIE                               00000007
+IMPRIME                           00000034
+INDF                              00000000
+INICIO                            00000013
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP                              00000042
+MODO_COMANDO                      0000002E
+MODO_DATO                         00000031
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+POS_PANT                          00000024
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+PULSO35                           0000003F
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+RB7                               00000007
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  6
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+REGISTROS                         00000025
+RETARDO                           00000026
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TEMP                              00000022
+TEMP2                             00000023
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TOPE                              00000046
+TOPEH                             00000048
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+MPASM  5.50                     LCD PIC84.ASM   12-14-2021  11:27:03         PAGE  7
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX
+0040 : XXXXXXXXXXXXX--- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    77
+Program Memory Words Free:   947
+
+
+Errors   :     0
+Warnings :    78 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+

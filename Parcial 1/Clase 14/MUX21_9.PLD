@@ -1,0 +1,27 @@
+Name     MUX21_9 ;
+PartNo   00 ;
+Date     15/09/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/* *************** INPUT PINS *********************/
+PIN  1   =    A    ; /*                                 */ 
+PIN  2   =    B    ; /*                                 */ 
+PIN  3   =    C    ; /*                                 */ 
+PIN  4   =    D    ; /*                                 */ 
+PIN  5   =    E0   ; /*                                 */ 
+PIN  6   =    E1   ; /*                                 */ 
+PIN  7   =    S0   ; /*                                 */ 
+
+/* *************** OUTPUT PINS *********************/
+PIN  23 = Z ; /*                                 */ 
+PIN  22 = X ; /*                                 */ 
+
+
+Z=!S0&E0#S0&E1;
+X=D&C#D&B;
+

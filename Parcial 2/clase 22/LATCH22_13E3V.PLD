@@ -1,0 +1,20 @@
+Name     LATCH22_13EV31ok ;
+PartNo   00 ;
+Date     06/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/* *************** INPUT PINS *********************/  
+PIN 1=clk;
+PIN 2=A;
+PIN 3=B;
+PIN 4=C;
+PIN 5=DX;
+
+PIN [23..20] = [q0..3]; 
+q0.D=C&!B#!B&A#B&!A; /* la salida q0 es d0*/
+q1.D=!DX#(DX&!C&!B);

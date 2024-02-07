@@ -1,0 +1,45 @@
+////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+////////////////////////////////////////////////////////////////////////////////
+//   ____  ____ 
+//  /   /\/   / 
+// /___/  \  /    Vendor: Xilinx 
+// \   \   \/     Version : 14.7
+//  \   \         Application : sch2hdl
+//  /   /         Filename : compuertas.vf
+// /___/   /\     Timestamp : 10/12/2020 08:20:32
+// \   \  /  \ 
+//  \___\/\___\ 
+//
+//Command: sch2hdl -intstyle ise -family spartan3e -verilog "C:/Users/carlo/Documents/Proyectos Xilinix/compuertasbase/compuertas.vf" -w "C:/Users/carlo/Documents/Proyectos Xilinix/compuertasbase/compuertas.sch"
+//Design Name: compuertas
+//Device: spartan3e
+//Purpose:
+//    This verilog netlist is translated from an ECS schematic.It can be 
+//    synthesized and simulated, but it should not be modified. 
+//
+`timescale 1ns / 1ps
+
+module compuertas(A, 
+                  B, 
+                  C, 
+                  X, 
+                  Z);
+
+    input A;
+    input B;
+    input C;
+   output X;
+   output Z;
+   
+   wire XLXN_6;
+   
+   AND2  XLXI_1 (.I0(A), 
+                .I1(B), 
+                .O(Z));
+   AND2  XLXI_2 (.I0(A), 
+                .I1(XLXN_6), 
+                .O(X));
+   INV  XLXI_3 (.I(C), 
+               .O(XLXN_6));
+endmodule

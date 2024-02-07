@@ -1,0 +1,19 @@
+Name     GAL22V10BATCH_2 ;
+PartNo   00 ;
+Date     06/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/* *************** INPUT PINS *********************/  
+PIN 1=clk;
+PIN [2..5]=[i0..i3];
+/* *************** OUTPUT PINS *********************/
+PIN [23..16] = [q7..0]; 
+q0.D=i2&!i1#(i1$i0);
+q1.D=!i3#i3&!12&!i1;
+
+

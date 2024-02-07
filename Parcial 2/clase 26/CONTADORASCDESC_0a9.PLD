@@ -1,0 +1,63 @@
+Name     ContadorAscDesc_0a9;
+PartNo   00 ;
+Date     27/10/2015 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+/* *************** INPUT PINS  *********************/  
+PIN 	1=CLK;
+PIN 	2=UP;
+PIN 3 = B;
+PIN 4 = A; 
+
+DOWN = !UP;
+
+/* *************** OUTPUT PINS *********************/
+PIN 14 = Z;
+PIN    [23,22,21,20] = [q0..3];
+PIN 15 = INDICADOR;
+PIN 16 = DETECTA6;
+
+Z = B&A;
+INDICADOR = DOWN&B&A;
+DETECTA6 = !q3&q2&q1&!q0;
+/* *************** Generar campos*******************/
+/* *************** Generar campos*******************/
+$define e0 'h'00
+$define e1 'h'01 
+$define e2 'h'02 
+$define e3 'h'03
+$define e4 'h'04
+$define e5 'h'05
+$define e6 'h'06
+$define e7 'h'07
+$define e8 'h'08
+$define e9 'h'09
+
+FIELD estados= [q0..3];   /*Largo de salida del estado*/
+
+SEQUENCE estados {
+PRESENT e0 if UP  NEXT e1;
+		if DOWN NEXT e9;
+PRESENT e1 if UP NEXT e2;
+		if DOWN NEXT e0;
+PRESENT e2 if UP NEXT e3;
+		if DOWN NEXT e1;
+PRESENT e3 if UP NEXT e4;
+		if DOWN NEXT e2;
+PRESENT e4 if UP NEXT e5;
+		if DOWN NEXT e3;
+PRESENT e5 if UP NEXT e6;
+		if DOWN NEXT e4;
+PRESENT e6 if UP NEXT e7;
+		if DOWN NEXT e5;
+PRESENT e7 if UP NEXT e8;
+		if DOWN NEXT e6;
+PRESENT e8 if UP NEXT e9;
+		if DOWN NEXT e7;
+PRESENT e9 if UP NEXT e0;
+		if DOWN NEXT e8;
+}

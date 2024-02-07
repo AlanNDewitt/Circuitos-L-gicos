@@ -1,0 +1,33 @@
+Name     TEST_ALU ;
+PartNo   00 ;
+Date     27/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/*ENTRADAS*/
+
+PIN 2 = A;
+PIN 3 = B;
+PIN 4 = C;
+PIN 5 = D;
+PIN 6 = E;
+
+/*SALIDAS*/
+
+PIN 23 = S;
+PIN 22 = C0;
+
+/*ECUACIONES*/
+
+S = !E&!D&(C$B$A)# /*CIRCLE RED*/
+D&B&!A# /*CICLE VERDE*/
+!E&D&!B&A# /*CIRCLE DARK BLUE*/
+E&D&!B&!A# /*CIRCLE ORANJE*/
+E&!D&B&A; /*CIRCLE BLUE LIGHT*/
+
+C0 = !E&!D&(B&A#C&A#C&B);
+

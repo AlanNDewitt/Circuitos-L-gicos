@@ -1,0 +1,40 @@
+Name     DecHex22 ;
+PartNo   00 ;
+Date     28/09/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/*Entradas*/
+PIN [2..5]=[10..3];
+PIN 6=INV;
+/*SALIDAS*/
+PIN [16..23]=[Q7..0];
+
+Q7=!INV;
+FIELD entrada = [I3..0]; /* Campo de entrada*/
+FIELD salida = [Q6..0];   /* Campo de salida*/
+TABLE entrada => salida {
+'h'0=>  'h'3f;
+'h'1 => 'h'06;
+'h'2 => 'h'5b;
+'h'3 => 'h'4f;
+'h'4 => 'h'66;
+'h'5 => 'h'6d;
+'h'6 => 'h'7d;
+'h'7 => 'h'07;
+'h'8 => 'h'7f;
+'h'9 => 'h'6f;
+'h'a => 'h'77;
+'h'b => 'h'7c;
+'h'c => 'h'58;
+'h'd => 'h'5e;
+'h'e => 'h'79;
+'h'f => 'h'71;
+}
+
+
+

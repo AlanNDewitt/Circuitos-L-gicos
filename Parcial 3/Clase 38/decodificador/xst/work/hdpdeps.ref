@@ -1,0 +1,8 @@
+V3 3
+FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.vhd" 2021/11/17.11:06:16 P.20131013
+EN work/Decodificador 1637170813 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.vhd" \
+      PB ieee/std_logic_1164 1381692176
+AR work/Decodificador/Behavioral 1637170814 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.vhd" \
+      EN work/Decodificador 1637170813

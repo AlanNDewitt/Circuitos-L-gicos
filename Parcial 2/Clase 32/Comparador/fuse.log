@@ -1,0 +1,22 @@
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib unisims_ver -lib unimacro_ver -lib xilinxcorelib_ver -o C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test_isim_beh.exe -prj C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test_beh.prj work.comparador_test work.glbl 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Analyzing Verilog file "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test.v" into library work
+Analyzing Verilog file "C:/Xilinx/14.7/ISE_DS/ISE//verilog/src/glbl.v" into library work
+Parsing VHDL file "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/Comparadorr.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Compiling module comparador_test
+Compiling module glbl
+Compiling package standard
+Compiling package std_logic_1164
+Compiling architecture behavioral of entity Comparadorr [comparadorr_default]
+Time Resolution for simulation is 1ps.
+Waiting for 1 sub-compilation(s) to finish...
+Compiled 4 VHDL Units
+Compiled 2 Verilog Units
+Built simulation executable C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Comparador/comparador_test_isim_beh.exe
+Fuse Memory Usage: 31328 KB
+Fuse CPU Usage: 530 ms

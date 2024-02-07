@@ -1,0 +1,37 @@
+Name     Sumador_Restador_G22 ;
+PartNo   00 ;
+Date     21/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/*ENTRADAS*/
+PIN [1..4] = [A0..3];
+PIN [5..8] = [B0..3];
+
+/*SALIDAS*/
+PIN [23..20] = [S0..3];  /*SUMAS*/
+PIN [19..16] = [C1..4];  /*ACARREO*/
+PIN 9 = CIN; /*ACARREO INICIAL RESTA*/
+
+FIELD X = [X0..3];
+
+X0 = A0$CIN; /*SI CIN = 0 SE SUMA, CIN = 1 SE RESTA*/
+X1 = A1$CIN;
+X2 = A2$CIN;
+X3 = A3$CIN;
+
+S0 = B0$X0$CIN;
+C1 = B0&CIN#X0&CIN#B0&X0;
+
+S1 = B1$X1$C1;
+C2 = B1&C1#X1&C1#B1&X1;
+
+S2 = B2$X2$C2;
+C3 = B2&C2#X2&C2#B2&X2;
+
+S3 = B3$X3$C3;
+C4 = B3&C3#X3&C3#B3&X3;

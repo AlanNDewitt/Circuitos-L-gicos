@@ -1,0 +1,21 @@
+Release 14.7 Drc P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Thu Nov 18 13:05:59 2021
+
+drc -z cuenta_unos.ncd cuenta_unos.pcf
+
+ERROR:PhysDesignRules:368 - The signal <habilita0_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+ERROR:PhysDesignRules:368 - The signal <habilita1_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+ERROR:PhysDesignRules:368 - The signal <habilita2_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+ERROR:PhysDesignRules:368 - The signal <habilita3_OBUF> is incomplete. The
+   signal is not driven by any source pin in the design.
+ERROR:PhysDesignRules:10 - The network <habilita0_OBUF> is completely unrouted.
+ERROR:PhysDesignRules:10 - The network <habilita1_OBUF> is completely unrouted.
+ERROR:PhysDesignRules:10 - The network <habilita2_OBUF> is completely unrouted.
+ERROR:PhysDesignRules:10 - The network <habilita3_OBUF> is completely unrouted.
+ERROR:Bitgen:25 - DRC detected 8 errors and 0 warnings.  Please see the
+   previously displayed individual error or warning messages for more details.

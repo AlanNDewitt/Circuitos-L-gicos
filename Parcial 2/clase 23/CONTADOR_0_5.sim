@@ -1,0 +1,30 @@
+%SIGNAL
+PIN   1 =  CLK 
+PIN  19 =  Q0 
+PIN  18 =  Q1 
+PIN  17 =  Q2 
+PIN  16 =  Q3 
+PIN  12 =  Z 
+%END
+
+%FIELD
+FIELD ESTADOS = Q0,Q1,Q2,Q3
+%END
+
+%EQUATION
+Q0.d  =>
+    !Q0 & !Q1 & Q2 & !Q3
+  # !Q0 & !Q2 & !Q3
+
+Q1.d  =>
+    Q0 & !Q1 & !Q2 & !Q3
+  # !Q0 & Q1 & !Q2 & !Q3
+
+Q2.d  =>
+    !Q0 & !Q1 & Q2 & !Q3
+  # Q0 & Q1 & !Q2 & !Q3
+
+Q3.d  =>
+    0 
+
+%END

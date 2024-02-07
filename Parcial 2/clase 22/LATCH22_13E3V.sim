@@ -1,0 +1,32 @@
+%SIGNAL
+PIN   2 =  A 
+PIN   3 =  B 
+PIN   4 =  C 
+PIN   5 =  DX 
+PIN   1 =  clk 
+PIN  23 =  q0 
+PIN  22 =  q1 
+PIN  21 =  q2 
+PIN  20 =  q3 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+q0.d  =>
+    !B & C
+  # A & !B
+  # !A & B
+
+q1.d  =>
+    !DX
+  # !B & !C & DX
+
+q0.oe  =>
+    1 
+
+q1.oe  =>
+    1 
+
+%END

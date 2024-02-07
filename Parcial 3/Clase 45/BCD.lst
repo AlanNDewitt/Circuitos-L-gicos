@@ -1,0 +1,260 @@
+MPASM  5.50                           BCD.ASM   12-7-2021  11:25:11         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #INCLUDE "P16F84A.INC"
+                      00001         LIST
+                      00002 
+                      00003 ;==========================================================================
+                      00004 ;  MPASM PIC16F84A processor include
+                      00005 ; 
+                      00006 ;  (c) Copyright 1999-2013 Microchip Technology, All rights reserved
+                      00007 ;==========================================================================
+                      00008 
+                      00208         LIST
+  0000000C            00002 DIVIDENDO EQU 0XC
+  0000000D            00003 DIVISOR EQU 0XD
+  0000000E            00004 COCIENTE EQU 0XE
+  0000000F            00005 MULTIPLICANDO EQU 0XF
+  00000010            00006 MULTIPLICADOR EQU 0X10
+  00000011            00007 PRODUCTO EQU 0X11
+  00000012            00008 BINARIO EQU 0X12 
+Warning[203]: Found opcode in column 1. (BSF)
+0000   1683           00009 BSF STATUS,5;CONFIGURAR PUERTOS
+Warning[203]: Found opcode in column 1. (MOVLW)
+0001   30FF           00010 MOVLW 0XFF
+Warning[203]: Found opcode in column 1. (MOVWF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0086           00011 MOVWF TRISB
+                      00012 
+Warning[203]: Found opcode in column 1. (BCF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0003   1205           00013 BCF TRISA,4
+Warning[203]: Found opcode in column 1. (BCF)
+0004   1283           00014 BCF STATUS,RP0;SALIR DE CONFIGURACIÓN
+Warning[203]: Found opcode in column 1. (BCF)
+0005   1205           00015 BCF PORTA,4
+0006                  00016 INICIO:
+Warning[203]: Found opcode in column 1. (BTFSS)
+0006   1C05           00017 BTFSS PORTA,0
+Warning[203]: Found opcode in column 1. (GOTO)
+0007   2806           00018 GOTO INICIO
+0008                  00019 INICIO2:
+Warning[203]: Found opcode in column 1. (BTFSC)
+0008   1A05           00020 BTFSC PORTA,4
+Warning[203]: Found opcode in column 1. (GOTO)
+0009   2808           00021 GOTO INICIO2
+Warning[203]: Found opcode in column 1. (MOVF)
+000A   0806           00022 MOVF PORTB,W;W=PORTB
+Warning[203]: Found opcode in column 1. (MOVWF)
+000B   0092           00023 MOVWF BINARIO
+                      00024 ;PROCESO A BCD NÚMERO ENTRE 10 Y
+                      00025 ;COCIENTE*6+BINARIO
+Warning[203]: Found opcode in column 1. (CLRF)
+000C   018E           00026 CLRF COCIENTE;
+Warning[203]: Found opcode in column 1. (MOVWF)
+000D   008C           00027 MOVWF DIVIDENDO;W=PORTB
+Warning[203]: Found opcode in column 1. (MOVLW)
+MPASM  5.50                           BCD.ASM   12-7-2021  11:25:11         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+000E   300A           00028 MOVLW 0XA;W=DIVISOR
+000F                  00029 DIVIDIENDO:
+Warning[203]: Found opcode in column 1. (INCF)
+000F   0A8E           00030 INCF COCIENTE,F;
+Warning[203]: Found opcode in column 1. (SUBWF)
+0010   028C           00031 SUBWF DIVIDENDO,F
+Warning[203]: Found opcode in column 1. (BTFSC)
+0011   1803           00032 BTFSC STATUS,C;CUANDO SEA NEGATIVOS SALTA
+Warning[203]: Found opcode in column 1. (GOTO)
+0012   280F           00033 GOTO DIVIDIENDO
+Warning[203]: Found opcode in column 1. (DECF)
+0013   038E           00034 DECF COCIENTE,F;
+                      00035 ;MULTIPLICAR*6
+Warning[203]: Found opcode in column 1. (MOVLW)
+0014   3006           00036 MOVLW 0X6
+Warning[203]: Found opcode in column 1. (MOVWF)
+0015   008F           00037 MOVWF MULTIPLICANDO
+Warning[203]: Found opcode in column 1. (MOVF)
+0016   080E           00038 MOVF COCIENTE,W;W=COCIENTE
+Warning[203]: Found opcode in column 1. (MOVWF)
+0017   0090           00039 MOVWF MULTIPLICADOR
+Warning[203]: Found opcode in column 1. (CLRW)
+0018   0103           00040 CLRW
+0019                  00041 MULTIPLICAR:
+Warning[203]: Found opcode in column 1. (ADDWF)
+0019   070F           00042 ADDWF MULTIPLICANDO,W
+Warning[203]: Found opcode in column 1. (DECFSZ)
+001A   0B90           00043 DECFSZ MULTIPLICADOR,F
+Warning[203]: Found opcode in column 1. (GOTO)
+001B   2819           00044 GOTO MULTIPLICAR
+Warning[203]: Found opcode in column 1. (ADDWF)
+001C   0712           00045 ADDWF BINARIO,W;SUMAR AL DATO INICIAL
+                      00046 ;RESULTADO FINAL
+Warning[203]: Found opcode in column 1. (BSF)
+001D   1605           00047 BSF PORTA,4 
+Warning[203]: Found opcode in column 1. (BSF)
+001E   1683           00048 BSF STATUS,RP0
+Warning[203]: Found opcode in column 1. (CLRF)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+001F   0186           00049 CLRF TRISB
+Warning[203]: Found opcode in column 1. (BCF)
+0020   1283           00050 BCF STATUS, RP0
+Warning[203]: Found opcode in column 1. (MOVWF)
+0021   0086           00051 MOVWF PORTB
+0022                  00052 FIN
+Warning[203]: Found opcode in column 1. (GOTO)
+0022   2822           00053 GOTO FIN
+                      00054 
+Warning[205]: Found directive in column 1. (END)
+                      00055 END
+MPASM  5.50                           BCD.ASM   12-7-2021  11:25:11         PAGE  3
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+BINARIO                           00000012
+C                                 00000000
+COCIENTE                          0000000E
+DC                                00000001
+DIVIDENDO                         0000000C
+DIVIDIENDO                        0000000F
+DIVISOR                           0000000D
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FIN                               00000022
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INICIO                            00000006
+INICIO2                           00000008
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+MULTIPLICADOR                     00000010
+MULTIPLICANDO                     0000000F
+MULTIPLICAR                       00000019
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PRODUCTO                          00000011
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RA0                               00000000
+RA1                               00000001
+RA2                               00000002
+RA3                               00000003
+RA4                               00000004
+RB0                               00000000
+RB1                               00000001
+RB2                               00000002
+RB3                               00000003
+RB4                               00000004
+RB5                               00000005
+RB6                               00000006
+MPASM  5.50                           BCD.ASM   12-7-2021  11:25:11         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+RB7                               00000007
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TMR0IE                            00000005
+TMR0IF                            00000002
+TRISA                             00000085
+TRISA0                            00000000
+TRISA1                            00000001
+TRISA2                            00000002
+TRISA3                            00000003
+TRISA4                            00000004
+TRISB                             00000086
+TRISB0                            00000000
+TRISB1                            00000001
+TRISB2                            00000002
+TRISB3                            00000003
+TRISB4                            00000004
+TRISB5                            00000005
+TRISB6                            00000006
+TRISB7                            00000007
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+_CONFIG                           00002007
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_DEVID1                           00002006
+_FOSC_EXTRC                       00003FFF
+_FOSC_HS                          00003FFE
+_FOSC_LP                          00003FFC
+_FOSC_XT                          00003FFD
+_HS_OSC                           00003FFE
+_IDLOC0                           00002000
+_IDLOC1                           00002001
+_IDLOC2                           00002002
+_IDLOC3                           00002003
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDTE_OFF                         00003FFB
+_WDTE_ON                          00003FFF
+MPASM  5.50                           BCD.ASM   12-7-2021  11:25:11         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXXXX XXX------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    35
+Program Memory Words Free:   989
+
+
+Errors   :     0
+Warnings :    36 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+

@@ -1,0 +1,39 @@
+%SIGNAL
+PIN   1 =  A 
+PIN   2 =  B 
+PIN   3 =  C 
+PIN   4 =  D 
+PIN   5 =  E 
+PIN  23 =  V1 
+PIN  22 =  V2 
+PIN  21 =  V3 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+V1 =>
+    !D & !E
+  # !B & !C & D & !E
+
+V2 =>
+    C & D & !E
+  # B & D & !E
+  # !C & !D & E
+  # !A & !B & !D & E
+
+V3 =>
+    !D & !E
+  # !B & !C & D & !E
+
+V1.oe  =>
+    1 
+
+V2.oe  =>
+    1 
+
+V3.oe  =>
+    1 
+
+%END

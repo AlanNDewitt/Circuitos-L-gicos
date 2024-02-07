@@ -1,0 +1,8 @@
+V3 3
+FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 39/Cuenta_Unos/cuenta_unos.vhd" 2021/11/18.13:05:24 P.20131013
+EN work/cuenta_unos 1637262333 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 39/Cuenta_Unos/cuenta_unos.vhd" \
+      PB ieee/std_logic_1164 1381692176
+AR work/cuenta_unos/Behavioral 1637262334 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 39/Cuenta_Unos/cuenta_unos.vhd" \
+      EN work/cuenta_unos 1637262333

@@ -1,0 +1,104 @@
+%SIGNAL
+PIN   3 =  A 
+PIN   4 =  B 
+PIN   1 =  CLK 
+PIN  16 =  DETECTA6 
+PIN  15 =  INDICADOR 
+PIN   2 =  UP 
+PIN  19 =  X0 
+PIN  18 =  X1 
+PIN  17 =  X2 
+PIN  14 =  Z 
+PIN  23 =  q0 
+PIN  22 =  q1 
+PIN  21 =  q2 
+PIN  20 =  q3 
+%END
+
+%FIELD
+FIELD estados = q0,q1,q2,q3
+FIELD estados2 = X0,X1,X2
+%END
+
+%EQUATION
+DETECTA6 =>
+    q0 & !q1 & !q2 & q3
+
+DOWN =>
+    !UP
+
+INDICADOR =>
+    A & B & !UP
+
+X0.d  =>
+    X0 & X2
+  # X0 & X1 & !X2
+
+X1.d  =>
+    X0 & !X1 & X2
+  # !X0 & X1 & X2
+
+X2.d  =>
+    X0 & X1 & !X2
+  # !X0 & !X1 & X2
+
+Z =>
+    A & B
+
+q0.d  =>
+    q0
+
+q1.d  =>
+    !UP & !q0 & !q1
+  # !UP & q0 & q1
+  # UP & !q0 & q1
+  # UP & q0 & !q1
+
+q2.d  =>
+    q0 & !q1 & !q2
+  # !UP & q0 & q1 & q2
+  # UP & !q0 & !q1 & q2
+  # UP & q1 & !q2
+  # !UP & !q0 & !q2
+
+q3.d  =>
+    !UP & !q0 & !q1 & !q2 & !q3
+  # !UP & q0 & q1 & q2 & q3
+  # UP & !q0 & !q1 & !q2 & q3
+  # UP & q1 & q2 & !q3
+  # !UP & !q0 & q2 & !q3
+  # q0 & !q1 & !q3
+  # UP & !q0 & !q1 & q2 & !q3
+  # q1 & !q2 & !q3
+
+DETECTA6.oe  =>
+    1 
+
+INDICADOR.oe  =>
+    1 
+
+X0.oe  =>
+    1 
+
+X1.oe  =>
+    1 
+
+X2.oe  =>
+    1 
+
+Z.oe  =>
+    1 
+
+q0.oe  =>
+    1 
+
+q1.oe  =>
+    1 
+
+q2.oe  =>
+    1 
+
+q3.oe  =>
+    1 
+
+%END

@@ -1,0 +1,46 @@
+%SIGNAL
+PIN   1 =  E0 
+PIN   2 =  E1 
+PIN   3 =  E2 
+PIN   4 =  E3 
+PIN   5 =  E4 
+PIN  23 =  S0 
+PIN  22 =  S1 
+PIN  21 =  S2 
+%END
+
+%FIELD
+FIELD ENTRADA = E4,E3,E2,E1,E0
+FIELD SALIDA = S2,S1,S0
+%END
+
+%EQUATION
+S0 =>
+    !E1 & !E2 & E3 & !E4
+  # E0 & !E2 & !E3 & !E4
+  # !E0 & E1 & !E3 & !E4
+  # !E1 & E2 & !E3 & !E4
+  # E0 & E1 & E2 & !E3 & !E4
+
+S1 =>
+    !E0 & !E1 & E2 & !E3 & E4
+  # !E2 & !E3 & E4
+  # !E1 & E2 & E3 & !E4
+  # E1 & E3 & !E4
+
+S2 =>
+    E1 & !E2 & E3 & E4
+  # E0 & E2 & !E3 & E4
+  # !E0 & E1 & E2 & E4
+  # !E1 & E3 & E4
+
+S0.oe  =>
+    1 
+
+S1.oe  =>
+    1 
+
+S2.oe  =>
+    1 
+
+%END

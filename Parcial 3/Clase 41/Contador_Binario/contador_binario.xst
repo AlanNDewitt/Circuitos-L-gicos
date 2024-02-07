@@ -1,0 +1,5 @@
+set -tmpdir "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/xst/projnav.tmp"
+set -xsthdpdir "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/xst"
+elaborate
+-ifn contador_binario.prj
+-ifmt mixed

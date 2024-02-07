@@ -1,0 +1,26 @@
+Name     GAL16V8LATCH ;
+PartNo   00 ;
+Date     06/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G16V8 ;
+
+/* *************** INPUT PINS *********************/  
+PIN 1=clk;
+PIN 11=oe;
+PIN [2,3,4,5,6,7,8,9]=[i0,i1,i2,i3,i4,i5,i6,i7];
+/* *************** OUTPUT PINS *********************/
+PIN    [12,13,14,15,16,17,18,19] = [q7..0]; 
+q0.D=i0; /* la salida q0 es d0*/
+q1.D=i1; /* la salida q1 es d1*/  
+q2.D=i2; /* la salida q2 es d2*/ 
+q3.D=i3; /* la salida q3 es d3*/                 
+q4.D=i4; /* la salida q4 es d4*/   
+q5.D=i5; /* la salida q5 es d5*/ 
+q6.D=i6; /* la salida q6 es d6*/ 
+q7.D=i7; /* la salida q7 es d7*/       
+
+

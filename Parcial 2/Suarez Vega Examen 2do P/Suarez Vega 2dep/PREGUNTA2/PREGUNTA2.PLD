@@ -1,0 +1,48 @@
+Name     PREGUNTA2 ;
+PartNo   00 ;
+Date     04/11/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+
+PIN 1 = CLK;
+
+PIN [23..17] = [S0..6];
+PIN [16..14] = [C0..2];
+
+$define E0 'b'1000000
+$define E1 'b'1010000 
+$define E2 'b'1101110
+$define E3 'b'1101111
+
+$define e0 'b'000
+$define e1 'b'100
+$define e2 'b'010
+$define e3 'b'001
+
+
+FIELD ESTADOS = [S0..6];
+
+SEQUENCE ESTADOS {
+PRESENT E0 NEXT E1;
+PRESENT E1 NEXT E2;
+PRESENT E2 NEXT E3;
+PRESENT E3 NEXT E0;
+}
+
+FIELD ESTADOS2 = [C0..2];
+
+SEQUENCE ESTADOS2 {
+PRESENT e0 NEXT e1;
+PRESENT e1 NEXT e2;
+PRESENT e2 NEXT e3;
+PRESENT e3 NEXT e0;
+}
+
+
+

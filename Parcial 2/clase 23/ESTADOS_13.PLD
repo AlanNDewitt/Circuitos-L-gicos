@@ -1,0 +1,29 @@
+Name     ESTADOS_13 ;
+PartNo   00 ;
+Date     07/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+PIN 	1=CLK;
+/* *************** OUTPUT PINS *********************/
+PIN    [17..14] = [q3..0];
+/* *************** Generar campos*******************/
+$define e0 'h'00
+$define e1 'h'01 
+$define e2 'h'02 
+$define e3 'h'03
+FIELD estados= [q3..0];   /*Largo de salida del estado*/
+
+SEQUENCE estados {
+PRESENT e0 NEXT e1;
+PRESENT e1 NEXT e2;
+PRESENT e2 NEXT e3;
+PRESENT e3 NEXT e0;
+}
+
+
+

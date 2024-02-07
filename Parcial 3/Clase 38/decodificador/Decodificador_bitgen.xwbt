@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 38\decodificador\Decodificador.ncd
+OUTFILE=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 38\decodificador\Decodificador.bit
+FAMILY=Spartan3E
+PART=xc3s100e-5cp132
+WORKINGDIR=C:\Users\Edgar Alan\Documents\Circuitos Logicos II\Parcial 3\Clase 38\decodificador
+LICENSE=WebPack
+USER_INFO=211847159_0_0_350

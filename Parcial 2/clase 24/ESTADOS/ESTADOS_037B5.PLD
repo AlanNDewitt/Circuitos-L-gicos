@@ -1,0 +1,35 @@
+Name     ESTADOS_037B5 ;
+PartNo   00 ;
+Date     13/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+PIN 1 = CLK;
+
+PIN [17..14] = [Q3..0];
+
+$DEFINE E0 'H'0
+$DEFINE E1 'H'3
+$DEFINE E2 'H'7
+$DEFINE E3 'H'B
+$DEFINE E4 'H'5
+
+FIELD ESTADOS = [Q3..0];
+
+SEQUENCE ESTADOS {
+
+	PRESENT E0 NEXT E3;
+	PRESENT E3 NEXT E1;
+	PRESENT E1 NEXT E2;
+	PRESENT E2 NEXT E4;
+	PRESENT E4 NEXT E0;
+}
+
+
+
+

@@ -1,0 +1,27 @@
+Name     TRINOMIO ;
+PartNo   00 ;
+Date     05/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+/*DETERMINAR CUBO DE NUMERO HASTA EL 10*/
+
+PIN [2..5] = [E0..3];
+PIN [23..14] = [S0..9];
+
+FIELD SALIDA=[S0..9];
+FIELD ENTRADA=[E0..3];
+
+TABLE ENTRADA => SALIDA{
+
+$REPEAT X=[0..10]
+
+'d'{X} => 'd'{(X*X)+(2*X)+1};
+$REPEND
+}
+
+

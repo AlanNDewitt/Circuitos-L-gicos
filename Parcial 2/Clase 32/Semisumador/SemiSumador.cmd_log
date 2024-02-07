@@ -1,0 +1,14 @@
+xst -intstyle ise -ifn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Semisumador/SemiSumador.xst" -ofn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Semisumador/SemiSumador.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s100e-cp132-5 "SemiSumador.ngc" SemiSumador.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o SemiSumador_map.ncd SemiSumador.ngd SemiSumador.pcf 
+par -w -intstyle ise -ol high -t 1 SemiSumador_map.ncd SemiSumador.ncd SemiSumador.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml SemiSumador.twx SemiSumador.ncd -o SemiSumador.twr SemiSumador.pcf 
+bitgen -intstyle ise -f SemiSumador.ut SemiSumador.ncd 
+xst -intstyle ise -ifn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Semisumador/SemiSumador.xst" -ofn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 2/Clase 32/Semisumador/SemiSumador.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc SemiSumador.ucf -p xc3s100e-cp132-5 "SemiSumador.ngc" SemiSumador.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc SemiSumador.ucf -p xc3s100e-cp132-5 "SemiSumador.ngc" SemiSumador.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc SemiSumador.ucf -p xc3s100e-cp132-5 "SemiSumador.ngc" SemiSumador.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o SemiSumador_map.ncd SemiSumador.ngd SemiSumador.pcf 
+par -w -intstyle ise -ol high -t 1 SemiSumador_map.ncd SemiSumador.ncd SemiSumador.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml SemiSumador.twx SemiSumador.ncd -o SemiSumador.twr SemiSumador.pcf -ucf SemiSumador.ucf 
+bitgen -intstyle ise -f SemiSumador.ut SemiSumador.ncd 

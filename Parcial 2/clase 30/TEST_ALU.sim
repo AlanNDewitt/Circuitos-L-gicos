@@ -1,0 +1,36 @@
+%SIGNAL
+PIN   2 =  A 
+PIN   3 =  B 
+PIN   4 =  C 
+PIN  22 =  C0 
+PIN   5 =  D 
+PIN   6 =  E 
+PIN  23 =  S 
+%END
+
+%FIELD
+%END
+
+%EQUATION
+C0 =>
+    A & B & !D & !E
+  # A & C & !D & !E
+  # B & C & !D & !E
+
+S =>
+    !A & B & !C & !D & !E
+  # A & !B & !C & !D & !E
+  # !A & !B & C & !D & !E
+  # A & B & C & !D & !E
+  # !A & B & D
+  # A & !B & D & !E
+  # !A & !B & D & E
+  # A & B & !D & E
+
+C0.oe  =>
+    1 
+
+S.oe  =>
+    1 
+
+%END

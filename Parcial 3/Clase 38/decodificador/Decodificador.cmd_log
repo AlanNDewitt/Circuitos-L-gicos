@@ -1,0 +1,17 @@
+xst -intstyle ise -ifn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.xst" -ofn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc decodificador_patillaje.ucf -p xc3s100e-cp132-5 "Decodificador.ngc" Decodificador.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o Decodificador_map.ncd Decodificador.ngd Decodificador.pcf 
+par -w -intstyle ise -ol high -t 1 Decodificador_map.ncd Decodificador.ncd Decodificador.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Decodificador.twx Decodificador.ncd -o Decodificador.twr Decodificador.pcf -ucf decodificador_patillaje.ucf 
+bitgen -intstyle ise -f Decodificador.ut Decodificador.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc decodificador_patillaje.ucf -p xc3s100e-cp132-5 "Decodificador.ngc" Decodificador.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o Decodificador_map.ncd Decodificador.ngd Decodificador.pcf 
+par -w -intstyle ise -ol high -t 1 Decodificador_map.ncd Decodificador.ncd Decodificador.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Decodificador.twx Decodificador.ncd -o Decodificador.twr Decodificador.pcf -ucf decodificador_patillaje.ucf 
+bitgen -intstyle ise -f Decodificador.ut Decodificador.ncd 
+xst -intstyle ise -ifn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.xst" -ofn "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 38/decodificador/Decodificador.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc decodificador_patillaje.ucf -p xc3s100e-cp132-5 "Decodificador.ngc" Decodificador.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o Decodificador_map.ncd Decodificador.ngd Decodificador.pcf 
+par -w -intstyle ise -ol high -t 1 Decodificador_map.ncd Decodificador.ncd Decodificador.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml Decodificador.twx Decodificador.ncd -o Decodificador.twr Decodificador.pcf -ucf decodificador_patillaje.ucf 
+bitgen -intstyle ise -f Decodificador.ut Decodificador.ncd 

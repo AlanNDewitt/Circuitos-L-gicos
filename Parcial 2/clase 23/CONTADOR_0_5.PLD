@@ -1,0 +1,41 @@
+Name     contador_0_5 ;
+PartNo   00 ;
+Date     12/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G16V8 ;
+
+
+/*ENTRADAS*/
+
+PIN 1 = CLK;
+
+/*SALIDAS*/
+
+PIN 12 = Z;
+PIN [19..16]=[Q0..3];
+
+$DEFINE E0 'H'1
+$DEFINE E1 'H'2
+$DEFINE E2 'H'3
+$DEFINE E3 'H'4
+$DEFINE E4 'H'5
+$DEFINE E5 'H'0
+
+
+
+FIELD ESTADOS=[Q0..3];
+
+SEQUENCE ESTADOS{
+PRESENT E0 NEXT E1;
+PRESENT E1 NEXT E2;
+PRESENT E2 NEXT E3;
+PRESENT E3 NEXT E4;
+PRESENT E4 NEXT E5;
+PRESENT E5 NEXT E0;
+}
+
+

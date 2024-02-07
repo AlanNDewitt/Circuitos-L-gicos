@@ -1,0 +1,34 @@
+Name     LOGIC ;
+PartNo   00 ;
+Date     26/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+/*ENTRADAS*/
+PIN [1..4] = [A0..3];
+PIN [5..8] = [B0..3];
+PIN 9 = S;
+PIN 10 = INV;
+
+/*SALIDAS*/
+PIN [23..20] = [Z0..3];
+PIN [17..14] = [X0..3];
+
+/*ECUACIONES*/
+
+X = !INV;
+
+X0 = !A0;
+X1 = !A1;
+X2 = !A2;
+X3 = !A3;
+
+Z0 = (!S&(B0&A0)#S&(B0$A0))&INV#(!INV&X0);
+Z1 = (!S&(B1&A1)#S&(B1$A1))&INV#(!INV&X1);
+Z2 = (!S&(B2&A2)#S&(B2$A2))&INV#(!INV&X2);
+Z3 = (!S&(B3&A3)#S&(B3$A3))&INV#(!INV&X3);

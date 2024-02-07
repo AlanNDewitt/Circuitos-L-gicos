@@ -1,0 +1,86 @@
+%SIGNAL
+PIN  16 =  C0 
+PIN  15 =  C1 
+PIN  14 =  C2 
+PIN   1 =  CLK 
+PIN  23 =  S0 
+PIN  22 =  S1 
+PIN  21 =  S2 
+PIN  20 =  S3 
+PIN  19 =  S4 
+PIN  18 =  S5 
+PIN  17 =  S6 
+%END
+
+%FIELD
+FIELD ESTADOS = S0,S1,S2,S3,S4,S5,S6
+FIELD ESTADOS2 = C0,C1,C2
+%END
+
+%EQUATION
+C0.d  =>
+    C0 & !C1 & C2
+
+C1.d  =>
+    C0 & C1 & !C2
+
+C2.d  =>
+    C0 & C1 & C2
+
+S0.d  =>
+    S0 & !S1 & !S2 & !S3 & S4 & !S5 & !S6
+
+S1.d  =>
+    S0 & !S1 & !S2 & !S3 & S4 & !S5 & !S6
+  # S0 & S1 & S2 & S3 & !S4 & S5 & !S6
+
+S2.d  =>
+    S0 & !S1 & !S2 & !S3 & S4 & !S5 & !S6
+  # S0 & S1 & S2 & S3 & !S4 & S5 & !S6
+
+S3.d  =>
+    S0 & !S1 & !S2 & !S3 & S4 & !S5 & !S6
+  # S0 & S1 & S2 & S3 & !S4 & S5 & !S6
+
+S4.d  =>
+    S0 & S1 & S2 & S3 & S4 & S5 & !S6
+
+S5.d  =>
+    S0 & !S1 & !S2 & !S3 & S4 & !S5 & !S6
+  # S0 & S1 & S2 & S3 & !S4 & S5 & !S6
+
+S6.d  =>
+    S0 & S1 & S2 & S3 & S5 & !S6
+  # !S1 & !S2 & !S3 & S4 & !S5 & !S6
+
+C0.oe  =>
+    1 
+
+C1.oe  =>
+    1 
+
+C2.oe  =>
+    1 
+
+S0.oe  =>
+    1 
+
+S1.oe  =>
+    1 
+
+S2.oe  =>
+    1 
+
+S3.oe  =>
+    1 
+
+S4.oe  =>
+    1 
+
+S5.oe  =>
+    1 
+
+S6.oe  =>
+    1 
+
+%END

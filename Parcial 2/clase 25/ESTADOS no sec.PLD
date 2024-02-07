@@ -1,0 +1,40 @@
+Name     ESTADOS_NOSEC;
+PartNo   00 ;
+Date     03/10/2019 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+DEVICE G22V10;
+
+PIN 	1=CLK;
+/* *************** OUTPUT PINS *********************/
+PIN [17..14] = [q3..0];
+/* *************** Generar campos*******************/
+$define e0 'h'0 /*hay que agregar para que funcione*/
+$define e1 'h'7
+$define e2 'h'b
+$define e3 'h'3
+$define e4 'h'4
+$define e5 'h'5
+$define e6 'h'6
+$define e7 'h'7
+$define e8 'h'8
+$define e9 'h'9
+$define eA 'h'A
+$define eB 'h'B
+$define eC 'h'C
+$define eD 'h'D
+$define eE 'h'E
+$define eF 'hF
+
+FIELD estados= [q3..0];   /*Campo de salida numero de estados*/
+/* 0 - 3 - 7 - b - 5*/
+SEQUENCE estados {
+PRESENT e0 NEXT e3;
+PRESENT e3 NEXT e7;
+PRESENT e7 NEXT eB;
+PRESENT eB NEXT e5;
+PRESENT e5 NEXT e0;
+}

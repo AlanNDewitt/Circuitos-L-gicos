@@ -1,0 +1,4 @@
+NET "A" LOC="L3";	#SW
+NET "B" LOC="P11";  #SW
+NET "C" LOC="M11";  #LED
+NET "S" LOC="M5";   #LED

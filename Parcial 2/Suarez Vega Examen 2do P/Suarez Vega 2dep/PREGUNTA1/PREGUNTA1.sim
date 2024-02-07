@@ -1,0 +1,86 @@
+%SIGNAL
+PIN   1 =  E0 
+PIN   2 =  E1 
+PIN   3 =  E2 
+PIN   4 =  E3 
+PIN  23 =  S0 
+PIN  22 =  S1 
+PIN  21 =  S2 
+PIN  20 =  S3 
+PIN  19 =  S4 
+PIN  18 =  S5 
+PIN  17 =  S6 
+%END
+
+%FIELD
+FIELD ENTRADA = E0,E1,E2,E3
+FIELD SALIDA = S0,S1,S2,S3,S4,S5,S6
+%END
+
+%EQUATION
+S0 =>
+    E0 & E1 & !E2 & E3
+  # E0 & !E2 & !E3
+  # !E0 & E1 & !E3
+  # E0 & E1 & E2 & !E3
+
+S1 =>
+    E0 & E1 & !E2 & E3
+  # E0 & !E2 & !E3
+  # !E0 & E1 & !E3
+  # E0 & E1 & E2 & !E3
+
+S2 =>
+    !E0 & E1 & E2 & E3
+  # E0 & !E2 & !E3
+  # !E0 & E1 & !E3
+  # !E0 & !E1 & E2
+  # E0 & E1 & E2 & !E3
+  # !E1 & !E2 & E3
+  # E0 & E1 & !E2 & E3
+  # E0 & !E1 & E2 & E3
+
+S3 =>
+    1 
+
+S4 =>
+    !E0 & E1 & E2 & E3
+  # E0 & !E2 & !E3
+  # !E0 & E1 & !E3
+  # !E0 & !E1 & E2
+  # E0 & E1 & E2 & !E3
+  # !E1 & !E2 & E3
+  # E0 & E1 & !E2 & E3
+  # E0 & !E1 & E2 & E3
+
+S5 =>
+    !E0 & E1 & E2 & E3
+  # !E0 & !E1 & E2
+  # !E1 & !E2 & E3
+  # E0 & !E1 & E2 & E3
+
+S6 =>
+    1 
+
+S0.oe  =>
+    1 
+
+S1.oe  =>
+    1 
+
+S2.oe  =>
+    1 
+
+S3.oe  =>
+    1 
+
+S4.oe  =>
+    1 
+
+S5.oe  =>
+    1 
+
+S6.oe  =>
+    1 
+
+%END

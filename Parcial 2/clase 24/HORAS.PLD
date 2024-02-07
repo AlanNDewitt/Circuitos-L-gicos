@@ -1,0 +1,106 @@
+Name     HORAS ;
+PartNo   00 ;
+Date     07/10/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22v10 ;
+
+PIN 1=CLK;
+PIN 14=CLK2;
+/* *************** OUTPUT PINS *********************/
+PIN    [23..16] = [Q0..7];
+/* *************** Generar campos*******************/
+$define e0 'h'00
+$define e1 'h'01 
+$define e2 'h'02 
+$define e3 'h'03
+$define e4 'h'04
+$define e5 'h'05
+$define e6 'h'06
+$define e7 'h' 7
+$define e8 'h' 8
+$define e9 'h' 9
+$define e10 'h' 10
+$define e11 'h' 11
+$define e12 'h' 12
+$define e13 'h' 13
+$define e14 'h' 14
+$define e15 'h' 15
+$define e16 'h' 16
+$define e17 'h' 17
+$define e18 'h' 18
+$define e19 'h' 19
+$define e20 'h' 20
+$define e21 'h' 21
+$define e22 'h' 22
+$define e23 'h' 23
+$define e24 'h' 24
+$define e25 'h' 25
+$define e26 'h' 26
+$define e27 'h' 27
+$define e28 'h' 28
+$define e29 'h' 29
+$define e30 'h' 30
+$define e31 'h' 31
+$define e32 'h' 32
+$define e33 'h' 33
+$define e34 'h' 34
+$define e35 'h' 35
+$define e36 'h' 36
+$define e37 'h' 37
+$define e38 'h' 38
+$define e39 'h' 39
+$define e40 'h' 40
+$define e41 'h' 41
+$define e42 'h' 42
+$define e43 'h' 43
+$define e44 'h' 44
+$define e45 'h' 45
+$define e46 'h' 46
+$define e47 'h' 47
+$define e48 'h' 48
+$define e49 'h' 49
+$define e50 'h' 50
+$define e51 'h' 51
+$define e52 'h' 52
+$define e53 'h' 53
+$define e54 'h' 54
+$define e55 'h' 55
+$define e56 'h' 56
+$define e57 'h' 57
+$define e58 'h' 58
+$define e59 'h' 59
+
+FIELD estados= [Q7..0];   /*Largo de salida del estado*/
+SEQUENCE estados {
+PRESENT e0 NEXT e1;
+PRESENT e1 NEXT e2;
+PRESENT e2 NEXT e3;
+PRESENT e3 NEXT e4;
+PRESENT e4 NEXT e5;
+PRESENT e5 NEXT e6;
+PRESENT e6 NEXT e7;
+PRESENT e7 NEXT e8;
+PRESENT e8 NEXT e9;
+PRESENT e9 NEXT e10;
+PRESENT e10 NEXT e11;
+PRESENT e11 NEXT e12;
+PRESENT e12 NEXT e13;
+PRESENT e13 NEXT e14;
+PRESENT e14 NEXT e15;
+PRESENT e15 NEXT e16;
+PRESENT e16 NEXT e17;
+PRESENT e17 NEXT e18;
+PRESENT e18 NEXT e19;
+PRESENT e19 NEXT e20;
+PRESENT e20 NEXT e21;
+PRESENT e21 NEXT e22;
+PRESENT e22 NEXT e23;
+PRESENT e23 NEXT e0;
+}
+
+CLK2 = !(!Q7&!Q6&Q5&!Q4&!Q3&!Q2&Q1&Q0);
+

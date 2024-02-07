@@ -1,0 +1,45 @@
+Name     PREGUNTA1 ;
+PartNo   00 ;
+Date     04/11/2021 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+
+
+
+
+PIN [1..4] = [E0..3];
+
+PIN [23..17] = [S0..6];
+
+FIELD ENTRADA = [E0..3];
+FIELD SALIDA = [S0..6];
+
+TABLE ENTRADA => SALIDA {
+'h'00 => 'b'1001000;
+'h'01 => 'b'1011111;
+'h'02 => 'b'1011111;
+'h'03 => 'b'1011111;
+'h'04 => 'b'1111100;
+'h'05 => 'b'1001000;
+'h'06 => 'b'1011111;
+'h'07 => 'b'1011111;
+'h'08 => 'b'1111100;
+'h'09 => 'b'1111100;
+'h'A => 'b'1001000;
+'h'B => 'b'1011111;
+'h'C => 'b'1111100;
+'h'D => 'b'1111100;
+'h'E => 'b'1111100;
+'h'F => 'b'1001000;
+}
+
+
+
+
+
+
+

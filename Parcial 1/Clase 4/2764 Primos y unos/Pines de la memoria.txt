@@ -1,0 +1,16 @@
+Una memoria tiene dos tipos de operaciones
+1)lectura
+2)escritura
+
+para realizar estas se hacen a través de tres terminales
+de control.
+CE* chip eneable habiltación del chip
+OE* Output eneable habilitación de la salida
+WE* Write eneable habilitación de la escritura
+
+Lectura
+es el obtener un valor de una dirección desde la memoria
+para ello
+CE*=L 0
+OE*=L 0
+WE*=H 1

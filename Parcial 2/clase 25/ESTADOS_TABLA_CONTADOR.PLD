@@ -1,0 +1,54 @@
+Name     ESTADOS_TABLA_CONTADOR;
+PartNo   00 ;
+Date     27/10/2015 ;
+Revision 01 ;
+Designer Engineer ;
+Company  ESIME ;
+Assembly None ;
+Location  ;
+Device   G22V10 ;
+/* *************** INPUT PINS  *********************/  
+PIN 	1=CLK;
+PIN [2,3,4,5] = [i0..3]; 
+/* *************** OUTPUT PINS *********************/
+PIN    [23,22,21,20,19,18,17] = [c0..6];
+PIN    [16,15,14] = [q2..0];
+/* *************** Generar campos*******************/
+/* *************** Generar campos*******************/
+$define e0 'h'00
+$define e1 'h'01 
+$define e2 'h'02 
+$define e3 'h'03
+$define e4 'h'04
+$define e5 'h'05
+$define e6 'h'06
+$define e7 'h'07
+
+FIELD estados= [q0..2];   /*Largo de salida de VERDE*/
+SEQUENCE estados {
+PRESENT e0 NEXT e1;
+PRESENT e1 NEXT e2;
+PRESENT e2 NEXT e3;
+PRESENT e3 NEXT e4;
+PRESENT e4 NEXT e5;
+PRESENT e5 NEXT e6;
+PRESENT e6 NEXT e7;
+PRESENT e7 NEXT e0;
+}
+
+
+FIELD entrada = [i0..3];
+FIELD salida = [c0..6];   /*Campo de salida ROJO*/
+
+TABLE entrada => salida {
+'h'00 => 'h'3f;
+'h'01 => 'h'06;
+'h'02 => 'h'5b;
+'h'03 => 'h'4f;
+'h'04 => 'h'66;
+'h'05 => 'h'5D;
+'h'06 => 'h'7D;
+'h'07 => 'h'07;
+}
+
+

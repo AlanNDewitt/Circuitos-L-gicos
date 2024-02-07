@@ -1,0 +1,4 @@
+# PlanAhead Generated physical constraints 
+NET "B" LOC = "K3"  ; # sw1
+NET "A" LOC = "B4"  ; # sw0
+NET "Z" LOC = "L14" ; # LED0

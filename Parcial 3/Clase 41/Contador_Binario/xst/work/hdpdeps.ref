@@ -1,0 +1,8 @@
+V3 3
+FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/contador_binario.vhd" 2021/11/25.11:57:20 P.20131013
+EN work/contador_binario 1637863098 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/contador_binario.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+AR work/contador_binario/contar 1637863099 \
+      FL "C:/Users/Edgar Alan/Documents/Circuitos Logicos II/Parcial 3/Clase 41/Contador_Binario/contador_binario.vhd" \
+      EN work/contador_binario 1637863098

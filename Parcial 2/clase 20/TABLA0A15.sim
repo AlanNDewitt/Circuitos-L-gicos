@@ -1,0 +1,22 @@
+%SIGNAL
+PIN   2 =  E0 
+PIN   3 =  E1 
+PIN   4 =  E2 
+PIN   5 =  E3 
+PIN  23 =  S 
+%END
+
+%FIELD
+FIELD ENTRADA = E0,E1,E2,E3
+FIELD SALIDA = S
+%END
+
+%EQUATION
+S =>
+    !E1 & E2 & E3
+  # E1 & E3
+
+S.oe  =>
+    1 
+
+%END

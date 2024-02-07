@@ -1,0 +1,29 @@
+Command line:
+   compuertas_compuertas_sch_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  51327
+
+Wed Nov 10 10:57:14 2021
+
+
+ Elaboration Time: 0.0625 sec
+
+ Current Memory Usage: 5150.18 Meg
+
+ Total Signals          : 29
+ Total Nets             : 19
+ Total Signal Drivers   : 11
+ Total Blocks           : 6
+ Total Primitive Blocks : 4
+ Total Processes        : 13
+ Total Traceable Variables  : 21
+ Total Scalar Nets and Variables : 102
+Total Line Count : 40
+
+ Total Simulation Time: 0.15625 sec
+
+ Current Memory Usage: 4678.32 Meg
+
+Wed Nov 10 11:08:36 2021
+

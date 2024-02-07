@@ -1,0 +1,29 @@
+Command line:
+   SemiSumador_isim_beh.exe
+     -simmode  gui
+     -simrunnum  1
+     -socket  51464
+
+Wed Nov 10 11:26:03 2021
+
+
+ Elaboration Time: 0.03125 sec
+ Current Memory Usage: 5150.18 Meg
+
+ Total Signals          : 23
+ Total Nets             : 17
+ Total Signal Drivers   : 7
+ Total Blocks           : 4
+ Total Primitive Blocks : 3
+ Total Processes        : 8
+ Total Traceable Variables  : 18
+ Total Scalar Nets and Variables : 97
+Total Line Count : 14
+
+ Total Simulation Time: 0.515625 sec
+
+ Current Memory Usage: 4678.32 Meg
+
+Wed Nov 10 11:27:55 2021
+
+

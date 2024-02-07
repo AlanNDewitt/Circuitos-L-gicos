@@ -1,0 +1,20 @@
+NET "Entrada<0>" Loc="P11";
+NET "Entrada<1>" Loc="L3";
+NET "Entrada<2>" Loc="K3";
+NET "Entrada<3>" Loc="B4";
+
+NET "Salida<0>" Loc="L14";
+NET "Salida<1>" Loc="H12";
+NET "Salida<2>" Loc="N14";
+NET "Salida<3>" Loc="N11";
+NET "Salida<4>" Loc="P12";
+NET "Salida<5>" Loc="L13";
+NET "Salida<6>" Loc="M12";
+NET "Salida<7>" Loc="N13";
+
+NET "habilita0" Loc="K14";
+NET "habilita1" Loc="M13";
+NET "habilita2" Loc="J12";
+NET "habilita3" Loc="F12";
+
+NET "z" LOC = "M5";
